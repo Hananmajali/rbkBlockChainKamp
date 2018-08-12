@@ -1,0 +1,57 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<title>
+            Zulfikar Ramzan: Bitcoin
+		</title>
+    </head>
+    <link rel="icon" href="Sawtooth.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<body class='container'>
+        <div class="main-content"><div><div class="page">
+            <h1><strong>Zulfikar Ramzan: Bitcoin</strong></h1>
+            <hr>
+            <p>Note: You don't necessarily need to take the whole course, but makes sure you watch (and absorb!) the videos on hashing, signatures, and transaction blockchains. If you are going to tackle the extra credit, you will also want to watch the videos on proof of work and the money supply.</p>
+            <h3>1- Bitcoin: What is it?</h3>
+            <iframe width="853" height="480" src="https://www.youtube.com/embed/EA0LkCkvUeU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br>
+            <h3>2- Bitcoin: Overview</h3>
+            <iframe width="853" height="480" src="https://www.youtube.com/embed/Y-w7SnQWwVA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br>
+            <h3>3- Bitcoin: Cryptographic hash functions</h3>
+            <iframe width="853" height="480" src="https://www.youtube.com/embed/0WiTaBI82Mc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br>
+            <h3>4- Bitcoin: Digital signatures</h3>
+            <iframe width="853" height="480" src="https://www.youtube.com/embed/Aq3a-_O2NcI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br>
+            <h3>5- Bitcoin: Transaction records</h3>
+            <iframe width="853" height="480" src="https://www.youtube.com/embed/9-9_v1wSPBQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br>
+            <h3>6- Bitcoin: Proof of work</h3>
+            <iframe width="853" height="480" src="https://www.youtube.com/embed/9V1bipPkCTU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br>
+            <h3>7- Bitcoin: Transaction blockchains</h3>
+            <iframe width="853" height="480" src="https://www.youtube.com/embed/QzDO44oZWtE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br>
+            <h3>8- Bitcoin: The money supply</h3>
+            <iframe width="853" height="480" src="https://www.youtube.com/embed/JuWYLAtz3Y4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br>
+            <h3>9- Bitcoin: The security of blockchains</h3>
+            <iframe width="853" height="480" src="https://www.youtube.com/embed/8zgvzmKZ5vo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br>
+            <button class="scrollToTop btn btn-primary"><i class="fas fa-angle-double-up"></i></button>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                    $(document).ready(function(){
+                    //Check to see if the window is top if not then display button
+                    $(window).scroll(function(){
+                        if ($(this).scrollTop() > 100) {
+                            $('.scrollToTop').fadeIn();
+                        } else {
+                            $('.scrollToTop').fadeOut();
+                        }
+                    });
+                    //Click event to scroll to top
+                    $('.scrollToTop').click(function(){
+                        $('html, body').animate({scrollTop : 0},800);
+                        return false;
+                    });
+                    });
+                </script>
+        </div>
+    </body>
+</html>

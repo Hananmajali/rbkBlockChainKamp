@@ -1,0 +1,63 @@
+.main-content {
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 52rem;
+}
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+strong { 
+    font-weight: bold;
+ }
+body {
+    background: #f8f8f8;
+    color: #3b464e;
+    font-family: Heuristica, "Cambria", "Lucida Bright", "Georgia", serif;
+    font-weight: 300;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth ;
+}
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+
+/* .code {
+    background-color:rgb(236, 234, 234);
+    line-height: 1.5;
+    word-wrap: break-word;
+    color: rgb(201, 1, 1) 
+} */
+
+hr {
+	height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+  .scrollToTop{
+    width:30px; 
+    height:30px;
+    padding:10px; 
+    text-align:center; 
+    background: whiteSmoke;
+    font-weight: bold;
+    color: #444;
+    text-decoration: none;
+    position:fixed;
+    bottom:75px;
+    right:40px;
+    display:none;
+    background: url('arrow_up.png') no-repeat 0px 20px;
+}
+.scrollToTop:hover{
+    text-decoration: none;
+}

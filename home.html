@@ -31,14 +31,56 @@
                     </a>
                 </li>
             <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Day1</a>
+                <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Day1</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu1">
+                    <li>
+                        <a href="#d1sc-toggle"  id="d1sc-toggle">Schedule</a>
+                    </li>
+                    <li >
+                        <a href="#d1s-toggle"  id="d1s-toggle">Slides</a>
+
+                    </li>
+                    <li>
+                        <a href="#d1v-toggle"  id="d1v-toggle">Solution Video</a>
+                    </li>
+                </ul>
+            </li>            <li class="active">
+                <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Day2</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu2">
+                    <li>
+                        <a href="#d1sc-toggle"  id="d1sc-toggle">Schedule</a>
+                    </li>
+                    <li >
+                        <a href="#d1s-toggle"  id="d1s-toggle">Slides</a>
+
+                    </li>
+                    <li>
+                        <a href="#d1v-toggle"  id="d1v-toggle">Solution Video</a>
+                    </li>
+                </ul>
+            </li>            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Day3</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
                         <a href="#d1sc-toggle"  id="d1sc-toggle">Schedule</a>
                     </li>
                     <li >
                         <a href="#d1s-toggle"  id="d1s-toggle">Slides</a>
-                        
+
+                    </li>
+                    <li>
+                        <a href="#d1v-toggle"  id="d1v-toggle">Solution Video</a>
+                    </li>
+                </ul>
+            </li>            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Day4</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a href="#d1sc-toggle"  id="d1sc-toggle">Schedule</a>
+                    </li>
+                    <li >
+                        <a href="#d1s-toggle"  id="d1s-toggle">Slides</a>
+
                     </li>
                     <li>
                         <a href="#d1v-toggle"  id="d1v-toggle">Solution Video</a>
@@ -53,7 +95,7 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <h1>Welcome to RBK BlockChain BootKamp </h1>
-               
+
                 <br>
                 <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
             </div>
@@ -70,7 +112,8 @@
     <!-- Menu Toggle Script -->
     <script>
     $("#d1sc-toggle").click(function(e) {
-    $('.container-fluid').html(`<h1>Here we should have the schedule</h1>`);
+        // Day1
+    $('.container-fluid').html(`<iframe src="DYI Blockchain.html" height="1100" width="1100"></iframe>`);
       });
     $("#d1s-toggle").click(function(e) {
     $('.container-fluid').html(`<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQepZ3xH4VpxVqrbzDyiHaKjqv_pokw1q2hfKDuTTCtU-xSPRqQAiu0sS6Hc0PC29CFKPPFLzKcype_/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1100" height="680" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>`);

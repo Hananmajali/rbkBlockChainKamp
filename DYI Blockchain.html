@@ -1,0 +1,344 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<title>
+			DIY Blockchain
+		</title>
+	</head>
+<link rel="icon" href="Sawtooth.png" type="image/x-icon"/>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="style.css"/>
+	<body class='container'>
+		<div class="main-content"><div><div class="page"><h1 id="chatterbox-server"><strong>Part One: DIY Blockchain</strong></h1>
+		<hr>
+			<p>What better way to learn about blockchains than to build your own? In this section you will construct your own simple blockchain in the vein of Bitcoin and other cryptocurrencies. Using cryptographic private/public key pairs, users will be able to create transactions sending funds from their public key to that of another user. Like any other blockchain, these transactions will become a permanent immutable part of the ledger, protected by the hashes that link each block to the one that came before it in the chain.</p>
+			<ul>
+				<li><a href="#getting-started">Getting Started and Running Tests</a></li>
+				<li><a href="#curriculum">The Curriculum</a>
+					<ul>
+						<li><a href="#blockchainlecture">Blockchain Lecture</a></li>
+						<li><a href="#zulfikar">Zulfikar Ramzan: Bitcoin</a></li>
+					</ul>
+				</li>
+				<li><a href="#theproject">The Project</a>
+					<ul>
+						<li><a href="#01signing">1- Signing</a></li>
+						<li><a href="#02blockchain">2- Blockchain</a></li>
+						<li><a href="#03validation">3- Validation</a></li>
+					</ul>
+				</li>
+				<li><a href="#extracredit">Extra Credit</a>
+					<ul>
+						<li><a href="#04mining">4- Mining</a></li>
+					</ul>
+				</li>
+			</ul>
+			<h2 id="getting-started"><strong>Getting Started and Running Tests</strong></h2>
+			<hr>
+
+			<p>This section uses Node and npm to install dependencies and run tests. To begin, first install Node 8 or higher. Then run these commands from your terminal:</p>
+			<code class="code">
+				cd code/part-one/<br>
+				npm install<br>
+				npm test</code>
+			<p><br>
+				You should see a number of tests run, most of which are failing.
+				<br>
+
+				(╯︵╰,)
+
+				<br><br>
+				Your job, in short, is to make these tests pass. As you work your way through the sections below, keep running <code class="code">&nbspnpm test </code>to check your progress and get clues to what you should do next.
+			</p>
+
+
+			<h2 id="curriculum"><strong>The Curriculum</strong></h2>
+			<hr>
+			<h3 id="blockchainlecture"><strong>Blockchain Lecture</strong></h3>
+
+			<p>
+				The first part of the Cryptomoji lecture is a brief overview of the blockchain data structure and the technologies that power it:
+				hashing, signatures, and consensus. The lecture itself is 15 minutes long with an
+				additional 10 minutes of Q&A. They are included in this repo as two videos:
+			</p>
+
+			<h4><strong>Blockchain Overview Lecture</strong></h4>
+			<hr>
+			<iframe width="853" height="480" src="https://www.youtube.com/embed/lkMMGr-gCls" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br>
+			<h4><strong>Blockchain Overview Questions</strong></h4>
+			<hr>
+			<iframe width="853" height="480" src="https://www.youtube.com/embed/1ab5QILT85o" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br>
+			<p>
+				In addition to the video, here is the slides. The general blockchain section is the first 8 slides:
+			</p>
+			<hr>
+			<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRCJir6ygjuV3odZFZLnLGtb09r3N2isbeTwBAGxtEtHcBsg1PHpRQBy4w_7_kwHT710vCX6X9OaFb-/embed?start=false&loop=false&delayms=3000" frameborder="0" width="853" height="480" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe><br><br>
+
+			<h1 id="zulfikar"><strong>Zulfikar Ramzan: Bitcoin</strong></h1>
+			<hr>
+			<p>
+				For a deeper dive, follow up the lecture with Zulfikar Ramzan's excellent Khan Academy course about the inner workings of the Bitcoin protocol.
+				 While your blockchain will have some differences from Bitcoin (in particular the way "inputs" and "outputs" are handled),
+				  there will be a lot of overlap (9 videos):</p>
+			<h4>Follow this link: <a href="./ZulfikarRamzanBitcoin.html" target="_blank">Zulfikar Ramzan Bitcoin</a><h4><br>
+
+
+
+			<h1 id="theproject"><strong>The Project</strong></h1>
+			<hr>
+			<p>The intro blockchain project is broken into four modules, one of which is extra credit.</p>
+			<h3 id="01signing" style='font-weight: bold'>1- Signing</h3>
+			<p><strong>Module:</strong> signing.js</p>
+			<p style='font-weight: bold'>Useful APIs:</p>
+			<ul>
+				<li><a href="https://github.com/cryptocoinjs/secp256k1-node#usage">secp256k1-node</a></li>
+				<li><a href="https://nodejs.org/api/buffer.html#buffer_class_method_buffer_from_string_encoding" rel="nofollow">Buffer.from</a></li>
+				<li><a href="https://nodejs.org/api/buffer.html#buffer_buf_tostring_encoding_start_end" rel="nofollow">Buffer.toString</a></li>
+			</ul>
+
+			<p>Signatures form the basis for verifiable identity and correctness on most, if not all, blockchains. First, a private key is generated; it's basically just a random set of bytes. This key is kept secret. Next, a cryptographic algorithm uses these bytes to derive a public key which can be widely shared. Finally, a signature is generated by combining the private key with some message.
+				 This signature, the message, and the public key are then all distributed together.</p>
+				 <div class='panel panel-default'>
+					<div class='panel-body'>
+					<pre class="code"><code>
+ private key              message      private key
+      |                         \   	  /
+      v                          v   	 v
+ public key                      signature
+					</code></pre>
+					</div>
+                </div>
+
+
+			<p>While others won't ever be able to deduce the original private key, they will be able to confirm that the public key and signature came from the same private key and that the
+					 message was not altered. Not even a single byte. This powerful cryptographic tool is fundamental to how blockchains work.</p>
+
+				<div class='panel panel-default'>
+					<div class='panel-body'>
+			<pre class="code"><code>
+ public key -
+	     \
+  signature - - - > ???
+	     /
+   message -
+			</code></pre>
+					</div>
+				</div>
+
+			<p>In this section, you will build a simple signing API using Secp256k1, a common
+			cryptographic algorithm used by Bitcoin, Ethereum, and Hyperledger Sawtooth.
+			The underlying math is rather complex, so we will be relying on the library
+			<a href="https://github.com/cryptocoinjs/secp256k1-node">secp256k1-node</a> to do the
+			heavy lifting for us. Make sure you familiarize yourself with its API.</p>
+
+			<p>Note that this library uses <a href="https://nodejs.org/api/buffer.html" rel="nofollow">Node Buffers</a>
+			(basically raw bytes) as the format of choice for keys and signatures. One of
+			your jobs will be to convert these bytes to and from hex strings, which are
+			slightly more convenient for our purposes. Make sure you are familiar with
+			Buffer's <code class="code">from</code> and <code class="code">toString</code> methods.</p>
+
+			<p>You will be implementing four stub methods:</p>
+
+			<ul>
+				<li><strong>createPrivateKey</strong></li>
+				<li><strong>getPublicKey</strong></li>
+				<li><strong>sign</strong></li>
+				<li><strong>verify</strong></li>
+			</ul><br><hr>
+
+			<h3 id="02blockchain" style='font-weight: bold'>2- Blockchain</h3>
+			<p><strong>Module:</strong> blockchain.js</p>
+			<p style='font-weight: bold'>Useful APIs:</p>
+			<ul>
+				<li><a href="https://nodejs.org/api/crypto.html#crypto_crypto_createhash_algorithm_options" rel="nofollow">crypto.createHash</a></li>
+				<li>your signing.js module!</li>
+			</ul>
+
+			<p>Before you can understand the blockchain data structure itself, you need to be
+				familiar with the concept of <em>hashing</em>: creating a deterministic digest of some
+				arbitrary data. Importantly, while the same data will always produce the same
+				hash, even a small change in the underlying data will create a completely
+				different digest:
+			</p>
+
+			<div class='panel panel-default'>
+				<div class='panel-body'>
+			<pre class="code"><code>
+ SHA-512: 'Hello, World!' -&gt; '374d794a95cdcfd8b35993185fef9ba368f160d8daf432d08ba9f1ed1e5abe6cc69291e0fa2fe0006a52570ef18c19def4e617c33ce52ef0a6e5fbe318cb0387'
+
+ SHA-512: 'Hello, World?' -&gt; '04d176b6977a4ee37d66e6c5b4a6cb9df46f73b453441af997b27f5f82c36bb18308b6ff5d29e4189fa41553e7ae7246db0482c9b78e42cbedc727f2ad639d9f'
+			</code></pre>
+				</div>
+			</div>
+
+			<p>You are free to use any hashing algorithm you like for this project, but your
+				best bet is to familiarize yourself with Node's crypto module. In
+				particular, use it to create SHA-512 hashes. This will come up later when you
+				start working with Hyperledger Sawtooth.
+			</p>
+
+			<p>Now that you understand hashing, a blockchain should actually be rather
+				straightforward. It's just bundles of data linked sequentially by hashes of
+				that data. Start with a "genesis" block. This is the only block which won't be
+				linked to a previous hash. Then gather some data into a new block, combine it
+				with the genesis hash, and create a new hash. When more data comes in,
+				repeat the process: bundle the data into a new block, combine it with the
+				previous hash, and generate a new hash.
+			</p>
+
+			<div class='panel panel-default'>
+				<div class='panel-body'>
+			<div><pre class="code">
+ [
+     {
+		data<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,
+		hash<span class="pl-k">:</span> <span style='color: rgb(0, 12, 82)' class="pl-s"><span class="pl-pds">'</span>cf83e1357eefb8bd...<span class="pl-pds">'</span></span>  <span style='color: rgb(126, 126, 126)' class="pl-c"><span class="pl-c">//</span style='color: silver'> &lt;- SHA-512: ''</span>
+     },
+     {
+		data<span class="pl-k">:</span> <span style='color: rgb(0, 12, 82)' class="pl-s"><span class="pl-pds">'</span>foo<span class="pl-pds">'</span></span>,
+		previousHash<span class="pl-k">:</span> <span style='color: rgb(0, 12, 82)' class="pl-s"><span class="pl-pds">'</span>cf83e1357eefb8bd...<span class="pl-pds">'</span></span>,
+		hash<span class="pl-k">:</span> <span style='color: rgb(0, 12, 82)' class="pl-s"><span class="pl-pds">'</span>0bfc4817f6e1e5f3...<span class="pl-pds">'</span></span>  <span style='color: rgb(126, 126, 126)' class="pl-c"><span class="pl-c">//</span style='color: silver'> &lt;- SHA-512: data + previousHash</span>
+     },
+     {
+		data<span class="pl-k">:</span> <span style='color: rgb(0, 12, 82)' class="pl-s"><span class="pl-pds">'</span>bar<span class="pl-pds">'</span></span>,
+		previousHash<span class="pl-k">:</span> <span style='color: rgb(0, 12, 82)' class="pl-s"><span class="pl-pds">'</span>0bfc4817f6e1e5f3...<span class="pl-pds">'</span></span>,
+		hash<span class="pl-k">:</span> <span style='color: rgb(0, 12, 82)' class="pl-s"><span class="pl-pds">'</span>cef9981655e46b59...<span class="pl-pds">'</span></span>  <span style='color: rgb(126, 126, 126)' class="pl-c"><span class="pl-c">//</span> &lt;- SHA-512: data + previousHash</span>
+     }
+ ]
+			</pre></div>
+				</div>
+			</div>
+
+			<p>Now all of your data is linked all the way back to your original genesis block.
+				If anyone attempts to tamper with the data in a block, the hashes will also
+				have to change. Anyone checking the chain of hashes would immediately see that
+				one does not match. In order to alter old data, you would have to modify not
+				only the target block, but <em>every</em> block that comes after it.
+			</p>
+
+			<p>You will implement your blockchain with three related ES6 classes:</p>
+
+			<ul>
+				<li><strong>Transaction</strong>: A signed transfer of funds from one public key to another</li>
+				<li><strong>Block</strong>: A hashed collection of transactions with a previous hash</li>
+				<li><strong>Blockchain</strong>: An ordered collection of blocks, with a method to calculate
+				balances</li>
+			</ul><br><hr>
+
+			<h3 id="03validation" style='font-weight: bold'>3- Validation</h3>
+			<p><strong>Module:</strong> validation.js</p>
+
+			<p>Blockchain validation is a huge and varied topic. In Sawtooth, validation is so
+			important that the central component is named a "validator". For this section,
+			you get to be your own validator and finally verify all of the cryptographic
+			boilerplate that you've been including with your blocks and transactions.
+			</p>
+
+			<p>You can use your <code>signing.verify</code> method to ensure that none of your
+				transactions have been tampered with. You should get a similar assurance for
+				your blocks if you recreate the hashes and make sure they match. Also, of
+				course, the chain of <code>previousHashes</code> should be unbroken all the way back to
+				your genesis block.
+			</p>
+			<p>You'll be completing four methods, one to validate each data structure you
+				made, and one more just for fun, to try to tamper with your own blockchain:
+			</p>
+
+			<ul>
+				<li><strong>isTransactionValid</strong></li>
+				<li><strong>isBlockValid</strong></li>
+				<li><strong>isChainValid</strong></li>
+				<li><strong>breakChain</strong></li>
+			</ul><br>
+
+			<h1 id="extracredit">Extra Credit</h1>
+			<hr>
+
+			<p>While the next module can help you gain a deeper understanding of consensus
+				algorithms, and <em>Proof of Work</em> in particular, you can feel free to move on to
+				<strong>part two</strong> at this point. This section is strictly
+				optional.
+			</p>
+
+			<p>To run the tests for this extra credit, remove the  <code>.skip</code> from the wrapping
+				<code>describe</code> block on Line 14 of
+				<strong>&nbsp;04-ExtraCredit-Mining.js.</strong>
+			</p>
+
+			<h3 id='04mining' style='font-weight: bold'>4- Mining</h3>
+			<p><strong>Module:</strong> mining.js</p>
+
+			<p>All this validation stuff is great, but what is to stop someone from coming in
+				and replacing huge sections of the blockchain with their own <em>valid</em> blocks and
+				transactions? That is where <em>consensus</em> comes in. A good consensus algorithm
+				like Proof of Work or
+				<a href="https://medium.com/kokster/understanding-hyperledger-sawtooth-proof-of-elapsed-time-e0c303577ec1" target="_blank" rel="nofollow">Proof of Elapsed Time</a>
+				(one of the algorithms available to Sawtooth), feature <em>Byzantine
+				Fault Tolerance</em>: they not only ensure correctness, but also prevent bad actors
+				from taking over the system and rewriting large sections of the blockchain.
+				Zulfikar Ramzan does an excellent job of
+				<a href="https://www.khanacademy.org/economics-finance-domain/core-finance/money-and-banking/bitcoin/v/bitcoin-proof-of-work" target="_blank" rel="nofollow">explaining how this works for Bitcoin</a>,
+				but the short version is that if you randomize who gets to create new blocks,
+				and always select the longest chain available, a bad actor would need to take
+				over 51% of the network to be effective. In a highly decentralized network,
+				this is hopefully impractical.
+			</p>
+
+			<p>So now it's your turn. You will create some tweaked versions of your original
+				blockchain structure around a new method: <code>MineableChain.mine</code>. This method
+				will allow your miners to solve the same cryptographic problem that Bitcoin
+				miners do, building your blockchain as they go, and rewarding themselves for
+				their efforts. Bonus: This means there is now a source for new funds on your
+				blockchain, so you can also check that no one has a negative balance.
+			</p>
+			<p>Three new classes:</p>
+			<ul>
+				<li><strong>MineableTransaction</strong></li>
+				<li><strong>MineableBlock</strong></li>
+				<li><strong>MineableChain</strong></li>
+			</ul>
+			<p>One new validation method:</p>
+			<ul>
+				<li><strong>isMineableChainValid</strong></li>
+			</ul>
+
+		</div></div>
+			</div>
+			<button class="scrollToTop btn btn-primary"><i class="fas fa-angle-double-up"></i></button>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+			<script>
+				$(document).ready(function(){
+				$(function() {
+				$('a[href*="#"]:not([href="#"])').click(function() {
+					if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+					var target = $(this.hash);
+					target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+					if (target.length) {
+						$('html, body').animate({
+						scrollTop: target.offset().top
+						}, 900);
+						return false;
+					}
+					}
+				});
+				});
+				//Check to see if the window is top if not then display button
+				$(window).scroll(function(){
+					if ($(this).scrollTop() > 100) {
+						$('.scrollToTop').fadeIn();
+					} else {
+						$('.scrollToTop').fadeOut();
+					}
+				});
+				//Click event to scroll to top
+				$('.scrollToTop').click(function(){
+					$('html, body').animate({scrollTop : 0},800);
+					return false;
+				});
+				});
+			</script>
+		</div>
+	</body>
+</html>
