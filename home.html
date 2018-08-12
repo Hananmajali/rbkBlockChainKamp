@@ -26,7 +26,7 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                <li class="sidebar-brand">
-                    <a href="#">
+                    <a href="#home" id="home">
                         RBK BlockChain
                     </a>
                 </li>
@@ -48,6 +48,20 @@
                 <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Day2</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu2">
                     <li>
+                        <a href="#d2sc-toggle"  id="d2sc-toggle">Schedule</a>
+                    </li>
+                    <li >
+                        <a href="#d2s-toggle"  id="d2s-toggle">Slides</a>
+
+                    </li>
+                    <li>
+                        <a href="#d2v-toggle"  id="d2v-toggle">Solution Video</a>
+                    </li>
+                </ul>
+            </li>            <li class="active">
+                <a href="#homeSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Day3</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu3">
+                    <li>
                         <a href="#d1sc-toggle"  id="d1sc-toggle">Schedule</a>
                     </li>
                     <li >
@@ -59,22 +73,8 @@
                     </li>
                 </ul>
             </li>            <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Day3</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                        <a href="#d1sc-toggle"  id="d1sc-toggle">Schedule</a>
-                    </li>
-                    <li >
-                        <a href="#d1s-toggle"  id="d1s-toggle">Slides</a>
-
-                    </li>
-                    <li>
-                        <a href="#d1v-toggle"  id="d1v-toggle">Solution Video</a>
-                    </li>
-                </ul>
-            </li>            <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Day4</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
+                <a href="#homeSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Day4</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu4">
                     <li>
                         <a href="#d1sc-toggle"  id="d1sc-toggle">Schedule</a>
                     </li>
@@ -96,9 +96,7 @@
             <div class="container-fluid">
                 <h1>Welcome to RBK BlockChain BootKamp </h1>
 
-                <br>
-                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
-            </div>
+                
         </div>
         <!-- /#page-content-wrapper -->
 
@@ -111,8 +109,11 @@
 
     <!-- Menu Toggle Script -->
     <script>
+    $("#home").click(function(e) {
+    $('.container-fluid').html(`  <h1>Welcome to RBK BlockChain BootKamp </h1>`);
+      });
+    //day1
     $("#d1sc-toggle").click(function(e) {
-        // Day1
     $('.container-fluid').html(`<iframe src="DYI Blockchain.html" height="1100" width="1100"></iframe>`);
       });
     $("#d1s-toggle").click(function(e) {
@@ -121,9 +122,19 @@
     $("#d1v-toggle").click(function(e) {
     $('.container-fluid').html(`<iframe src="https://drive.google.com/file/d/1C87_QvIf6SCF3SqMzQVhIsQniSC3RV54/preview" width="1100" height="680"></iframe>`);
       });
+      //day2
+      $("#d2sc-toggle").click(function(e) {
+      $('.container-fluid').html(`<h1>Day 2 schedule</h1>`);
+        });
+      $("#d2s-toggle").click(function(e) {
+      $('.container-fluid').html(`<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQepZ3xH4VpxVqrbzDyiHaKjqv_pokw1q2hfKDuTTCtU-xSPRqQAiu0sS6Hc0PC29CFKPPFLzKcype_/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1100" height="680" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>`);
+        });
+      $("#d2v-toggle").click(function(e) {
+      $('.container-fluid').html(`<iframe src="https://drive.google.com/file/d/1C87_QvIf6SCF3SqMzQVhIsQniSC3RV54/preview" width="1100" height="680"></iframe>`);
+        });
      $("#wrapper").toggleClass("toggled");
 
-    $("#menu-toggle").click(function(e) {
+    $(".menu-toggle").click(function(e) {
         e.preventDefault();
      $("#wrapper").toggleClass("toggled");
 
