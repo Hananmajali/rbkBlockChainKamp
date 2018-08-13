@@ -44,7 +44,8 @@
                         <a href="#d1v-toggle"  id="d1v-toggle">Solution Video</a>
                     </li>
                 </ul>
-            </li>            <li class="active">
+            </li>
+            <li class="active">
                 <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Day2</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu2">
                     <li>
@@ -58,32 +59,64 @@
                         <a href="#d2v-toggle"  id="d2v-toggle">Solution Video</a>
                     </li>
                 </ul>
-            </li>            <li class="active">
+            </li>
+            <li class="active">
                 <a href="#homeSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Day3</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu3">
                     <li>
-                        <a href="#d1sc-toggle"  id="d1sc-toggle">Schedule</a>
+                        <a href="#d3sc-toggle"  id="d3sc-toggle">Schedule</a>
                     </li>
                     <li >
-                        <a href="#d1s-toggle"  id="d1s-toggle">Slides</a>
+                        <a href="#d3s-toggle"  id="d3s-toggle">Slides</a>
 
                     </li>
                     <li>
-                        <a href="#d1v-toggle"  id="d1v-toggle">Solution Video</a>
+                        <a href="#d3v-toggle"  id="d3v-toggle">Solution Video</a>
                     </li>
                 </ul>
-            </li>            <li class="active">
+            </li>
+            <li class="active">
                 <a href="#homeSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Day4</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu4">
                     <li>
-                        <a href="#d1sc-toggle"  id="d1sc-toggle">Schedule</a>
+                        <a href="#d4sc-toggle"  id="d4sc-toggle">Schedule</a>
                     </li>
                     <li >
-                        <a href="#d1s-toggle"  id="d1s-toggle">Slides</a>
+                        <a href="#d4s-toggle"  id="d4s-toggle">Slides</a>
 
                     </li>
                     <li>
-                        <a href="#d1v-toggle"  id="d1v-toggle">Solution Video</a>
+                        <a href="#d4v-toggle"  id="d4v-toggle">Solution Video</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="#homeSubmenu5" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Day5</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu5">
+                    <li>
+                        <a href="#d5sc-toggle"  id="d5sc-toggle">Schedule</a>
+                    </li>
+                    <li >
+                        <a href="#d5s-toggle"  id="d5s-toggle">Slides</a>
+
+                    </li>
+                    <li>
+                        <a href="#d5v-toggle"  id="d5v-toggle">Solution Video</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="#homeSubmenu6" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Day6</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu6">
+                    <li>
+                        <a href="#d6sc-toggle"  id="d6sc-toggle">Schedule</a>
+                    </li>
+                    <li >
+                        <a href="#d6s-toggle"  id="d6s-toggle">Slides</a>
+
+                    </li>
+                    <li>
+                        <a href="#d6v-toggle"  id="d6v-toggle">Solution Video</a>
                     </li>
                 </ul>
             </li>
@@ -96,7 +129,7 @@
             <div class="container-fluid">
                 <h1>Welcome to RBK BlockChain BootKamp </h1>
 
-                
+
         </div>
         <!-- /#page-content-wrapper -->
 
@@ -132,6 +165,26 @@
       $("#d2v-toggle").click(function(e) {
       $('.container-fluid').html(`<iframe src="https://drive.google.com/file/d/1C87_QvIf6SCF3SqMzQVhIsQniSC3RV54/preview" width="1100" height="680"></iframe>`);
         });
+        //day5
+        $("#d5sc-toggle").click(function(e) {
+        $('.container-fluid').html(`<iframe src="ERC-20.html" height="1100" width="1100"></iframe>`);
+          });
+        $("#d5s-toggle").click(function(e) {
+        $('.container-fluid').html(``);
+          });
+        $("#d5v-toggle").click(function(e) {
+        $('.container-fluid').html(`<iframe src="https://drive.google.com/file/d/1C87_QvIf6SCF3SqMzQVhIsQniSC3RV54/preview" width="1100" height="680"></iframe>`);
+          });
+          //day6
+          $("#d6sc-toggle").click(function(e) {
+          $('.container-fluid').html(`<iframe src="ERC-721.html" height="1100" width="1100"></iframe>`);
+            });
+          $("#d6s-toggle").click(function(e) {
+          $('.container-fluid').html(`<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ7EdRAdsDA1Wv-oP2nH8R-lYrfW_kgh7eSSn8dP534EbYd-8TcLxawV8T52LmyrY1haaJjpeUwz3k5/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1100" height="680" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>`);
+            });
+          $("#d6v-toggle").click(function(e) {
+          $('.container-fluid').html(`<iframe src="https://drive.google.com/file/d/1C87_QvIf6SCF3SqMzQVhIsQniSC3RV54/preview" width="1100" height="680"></iframe>`);
+            });
      $("#wrapper").toggleClass("toggled");
 
     $(".menu-toggle").click(function(e) {
