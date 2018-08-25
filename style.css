@@ -30,12 +30,12 @@ body {
     box-sizing: inherit;
 }
 
-/* .code {
+.code {
     background-color:rgb(236, 234, 234);
     line-height: 1.5;
     word-wrap: break-word;
-    color: rgb(201, 1, 1) 
-} */
+    color: rgb(168, 0, 0) 
+}
 
 hr {
 	height: 10px;

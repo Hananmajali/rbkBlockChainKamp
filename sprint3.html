@@ -1,0 +1,215 @@
+<!DOCTYPE>
+<html>
+
+    <head>
+        <title>Sprint Three: Build your own cryptocurrency:
+        </title>
+    </head>
+    <link rel="icon" href="Sawtooth.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <body class='container'>
+        <div class="main-content">
+            <div>
+                <div class="page">
+                    <h1 id="chatterbox-server"><strong>Sprint Three: Build your own cryptocurrency:</strong></h1>
+                    <hr>
+                    <p>Ethereum tokens is a representation of any good that is tradable from a physical object to a native currency used . In the future, tokens may even be used to represent financial instruments like stocks and bonds. In this sprint you will be able to build your own currency token and transfer it</p>
+                    <ul>
+                    	<li><a href="#Key-words">Key Words</a>
+                        </li>
+                        <li><a href="#high-level-goals">High Level Goals of this Sprint</a>
+                        </li>
+                        <li><a href="#getting-started">Getting Started and Project Set Up</a>
+                        </li>
+                        <li><a href="#curriculum">The Curriculum</a>
+                            <ul>
+                                <li><a href="#projectlecture">Project Lecture</a>
+                                </li>
+                                <li><a href="#useful-links">Useful Links</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#theproject">The Project</a>
+                            
+                        </li>
+                        <li><a href="#extracredit">Extra Credit</a>
+                           <!--  <ul>
+                                <li><a href="#Depl">4- Mining</a>
+                                </li>
+                            </ul> -->
+                        </li>
+                    </ul>
+                    <h2 id="Key-words"><strong>Key Words</strong></h2>
+                    <hr>
+                    <ul>
+<li>Web3.</li>
+<li>Solidity.</li>
+<li>smart contracts.</li>
+<li>Ganache.</li>
+<li>Infura.</li>
+</ul>
+<h2 id="high-level-goal"><strong>High Level Goals of this Sprint</strong></h2>
+<hr> <ul>
+<li>Learn Solidity and how to write ethereal smart contracts</li>
+<li>Learn how to compile a contract with solidity compiler. </li>
+<li>Learn how to test your smart contract using Ganache.
+</li>
+<li>Learn how to deploy your code on Rinkeby test network</li>
+</ul>
+
+                    	<h2 id="getting-started"><strong>Getting Started and Project Set Up</strong></h2>
+                    <hr>
+<h3 id="npm">npm</h3>
+<p>This sprint uses <a href="https://www.npmjs.com/">npm</a> to manage its dependencies. npm comes bundled with Node, and is another JavaScript package manager that makes it easy for developers to share and reuse code. Even though npm started in the Node ecosystem, it is quickly becoming the default choice for sharing all types of JavaScript code.
+Install Node.js if you haven't yet.
+</p>
+<code class="code">Run npm install. </code>
+
+
+<h3 id="Solc">Solc</h3>
+<p>JavaScript bindings for the Solidity compiler. </p>
+<code class="code">Run npm install solc  —save. </code>
+
+<h3 id="npm-scripts">npm scripts</h3>
+<p>npm comes with a handy scripting feature that lets you define shell commands inside of package.json. </p>
+
+      
+
+
+                    	<h2 id="curriculum"><strong>The Curriculum</strong></h2>
+                    <hr>
+                    	<h3 id="projectlecture"><strong>Project Lecture</strong></h3>
+
+                    <hr>
+                    <iframe src="https://docs.google.com/presentation/d/1aA-0_8qLPQlRtLjr7-PRg4Ile-hg3cgvJ4NEz_eu0gQ/embed?start=false&loop=false&delayms=3000" frameborder="0" width="853" height="480" allowfullscreen="true" mozallowfullscreen="true"
+                    webkitallowfullscreen="true"></iframe>
+                    <br>
+                    <br>
+
+                    	<h3 id="useful-links"><strong>Useful Links</strong></h3>
+                    <hr>
+                    <ul><li><a href="https://theethereum.wiki/w/index.php/ERC20_Token_Standard">ERC20 Token Standard</a></li>
+                    	<li><a href="https://web3js.readthedocs.io/en/1.0/">Web3 Documentation</a></li>
+                    	<li><a href="https://web3j.readthedocs.io/en/latest/infura.html"></a>Using Infura with web3j</li>
+                    	
+                    </ul>
+
+
+
+
+
+
+
+			<h1 id="theproject"><strong>The Project</strong></h1>
+
+			<hr>
+<ul class="task-list">
+<li class="task-list-item"><p> Inside of your repo:</p>
+
+<p id="create-a-dynamic-video-list-component">First, get familiar with the EIP20Interface.sol file and try to understand its functions with their parameters. </p>
+<p>* Don’t add/delete comments in this file or you will get errors because they are considered part of the code</p>
+<p id="create-a-dynamic-video-list-component">Run npm run test. </p>
+<p id="create-a-dynamic-video-list-component">To pass the tests:  </p>
+
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Start implementing the EIP20Interface.sol  functions in HiddenFig.sol file</li>
+
+<p id="create-a-dynamic-video-list-component">* Hint: The commented line in compile.js file will help you to fix your contract errors. </p>
+
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Implement getTokens(), getEthers() functions which will let the sender buy and sell his tokens.   </li>
+
+</ul>
+</ul>
+
+
+
+
+
+
+			<h1 id="extracredit">Extra Credit</h1>
+
+			<hr>
+
+
+
+			<p>Deploy your contract on Rinkeby network using infura.</p>
+
+		</div></div>
+
+			</div>
+
+			<button class="scrollToTop btn btn-primary"><i class="fas fa-angle-double-up"></i></button>
+
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+			<script>
+
+				$(document).ready(function(){
+
+				$(function() {
+
+				$('a[href*="#"]:not([href="#"])').click(function() {
+
+					if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+					var target = $(this.hash);
+
+					target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+
+					if (target.length) {
+
+						$('html, body').animate({
+
+						scrollTop: target.offset().top
+
+						}, 900);
+
+						return false;
+
+					}
+
+					}
+
+				});
+
+				});
+
+				//Check to see if the window is top if not then display button
+
+				$(window).scroll(function(){
+
+					if ($(this).scrollTop() > 100) {
+
+						$('.scrollToTop').fadeIn();
+
+					} else {
+
+						$('.scrollToTop').fadeOut();
+
+					}
+
+				});
+
+				//Click event to scroll to top
+
+				$('.scrollToTop').click(function(){
+
+					$('html, body').animate({scrollTop : 0},800);
+
+					return false;
+
+				});
+
+				});
+
+			</script>
+
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE>
+<html>
+
+    <head>
+        <title>Sprint Two: Solidity Exercises
+        </title>
+    </head>
+    <link rel="icon" href="Sawtooth.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <body class='container'>
+        <div class="main-content">
+            <div>
+                <div class="page">
+                    <h1 id="chatterbox-server"><strong>Sprint Two: Solidity Exercises</strong></h1>
+                    <hr>
+                    <p>To be changed.</p>
+                    <ul>
+                        <li><a href="#getting-started">Getting Started</a>
+                        </li>
+                        <li><a href="#resources">The Resources</a>
+                            <ul>
+                                <li><a href="#ethereum-lecture">Ethereum Lecture</a>
+                                </li>
+                                <li><a href="#solidity-lecture">Solidity Lecture</a>
+                                </li>
+                                <li><a href="#useful-links">Useful Links</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#metamask">MetaMask</a></li>
+                        <li><a href="#exercises">The Exercises</a>
+                            <ul>
+                            	
+                                <li><a href="#01practice">1- Warm up exercise</a>
+                                </li>
+                                <li><a href="#02blockchainDB">2- Blockchain Camp Database</a>
+                                </li>
+                                <li><a href="#03auction">3- Action Contract</a>
+                                </li>
+                                <li><a href="#04knapsack">4- (0-1)knapsack Algorithm</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#extracredit">Extra Credit</a>
+                            <ul>
+                                <li><a href="#04ERC721">5- ERC721 Token</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    	<h2 id="getting-started"><strong>Getting Started </strong></h2>
+                    <hr>
+
+                    <p>section uses Remix online IDE. To begin, open Remix on your browser by navigating to:<a href="http://Remix.ethereum.org">Remix.ethereum.org</a>
+, then follow the instructions below which will guide you through what you have to build in this sprint.
+                    <p>
+          
+
+
+                    	<h2 id="resources"><strong>Resouces</strong></h2>
+                    <hr>
+                    <ul>
+                      <li><h3 id="ethereum-lecture"><strong>Ethereum Lecture</strong></h3></li>
+                      <iframe src="https://docs.google.com/presentation/d/1ZnGcHKb0RvoaGhdbgNYN3mAIOHtJHvUTQl3uYJBODkM/embed?start=false&loop=false&delayms=3000" frameborder="0" width="853" height="480" allowfullscreen="true" mozallowfullscreen="true"
+                  webkitallowfullscreen="true"></iframe>
+                      <li><h3 id="solidity-lecture"><strong>Solidity Lecture</strong></h3></li>
+
+                      <iframe src="https://docs.google.com/presentation/d/17c4c8XqcxLrX9DbBS8MZyQqytH4-_h9PTLHkP-sfb10/embed?start=false&loop=false&delayms=3000" frameborder="0" width="853" height="480" allowfullscreen="true" mozallowfullscreen="true"
+                  webkitallowfullscreen="true"></iframe>
+                    	<li>
+                    		
+                    	<h3 id="useful-links"><strong>Useful Links</strong></h3>
+                    	<ol>
+                    		<li><a href="https://solidity.readthedocs.io/en/v0.4.24/"></a>Solidity Documentation</li>
+                    		<li><a href="https://www.bitdegree.org/learn/solidity-error-handling/"></a>Error Handling in Solidity</li>
+                    		<li><a href="https://www.bitdegree.org/learn/solidity-reference-types/"></a>Reference Types</li>
+                    	</ol>
+                    	</li>
+
+                    </ul>
+                  
+                    <br>
+
+      <h1 id="metamask"><strong>MetaMask:</strong></h1>
+
+
+      <p> 
+- At the begining you have to download metamask from Chrome Web Store.<br>
+1- in your Chrome browser navigate to <a href="https://chrome.google.com/webstore/category/extensions"> Chrome web store</a><br>
+2- search for metamask.<br>
+3- click ADD TO CHROME.<br>
+4- you will have its icon in the top right of your browser.<br>
+5- click on the icon, and complete the steps untill you have the "create an account" window.<br>
+6- enter your password and save your secret words.<br>
+<br>
+
+- After that you will have your account (Account1) created, you can see that you don't have any ethers until now.<br>
+- From the drop list on the top you can see the Ethereum networks :<br>
+  a- The main network.<br>
+  b- The test networks :<br>
+    1- Ropsten.<br>
+    2- Kovan.<br>
+    3- Rinkeby.<br>
+  c- Local host 8545 : when we are hosting a local Ethereum node or local Ethereum test network.<br>
+  d- Custom RPC : when we are using some remote network at some address.<br>
+<br>
+- Now you have to get some ethers :<br>
+1- for that we will use Rinkeby test network, select it from the drop list in the top.<br>
+2- copy your account address, click on the three dots beside your account name (Account1) and then select copy. <br>
+3- in your browser navigate to <a href=" https://faucet.rinkeby.io"> faucet.rinkeby.io </a><br>
+4- follow the steps mentioned in the web site to get your ethers.<br>
+5- after completing all the steps successfully, your balance should be changed and you should see the amount of ethers you get. <br>
+
+Notice that if you changed the network, your balance will not be the same. <br>
+<br>
+- Perform a transaction :<br>
+1- create another account from the icon on the top right, click on it and select Create Account. <br>
+2- now you have two accounts (Account1 and Account2), you can switch between them by selecting the account name from the same icon. <br>
+3- from Account1, click on send and put the recipient address (Account2) and yhe ammount you want to transfer, then click next then submit.<br>
+<br>
+Notice that the balances will not change immediately, you will be notified when it is completed, after that you can check the balance for the both accounts.</p>
+
+			<h1 id="exercises"><strong>Exercises:</strong></h1>
+
+			<hr>
+
+			<p>You have here five exercises on solidity language, one of which is an extra credit.</p>
+			<h3 id="01practice" style='font-weight: bold'>I.	Warm Up exercise</h3>
+			<p></p>
+			<pre class="code"><code>
+pragma solidity ^0.4.0;
+contract exercise {
+   uint public balance;
+   string  name= "Sara"
+   int[] public nums=[1,2,3];
+   function setBalance(int x) public {
+       balance = x;
+   }
+   function getBalance() public  returns (uint) {
+       return balance;
+   }
+   function doubleBalance() public view returns (uint) {
+       balance=2*balance;
+       return balance;
+   }
+   function tripleBalance() constant public returns (uint) {
+       balance=3*balance;
+       return balance;
+   }
+}
+</code></pre>
+<p>1- Fix the errors.
+	<br>
+2-In the run tab, deploy your contract and click on your deployed contract, set you balance.
+<br>
+3-Try getBalance method, did you get your balance ?search about what can you fix to get your balance from this method. <br>
+4-Do you really need getBalance method or you can get it in another way? Why cant you get name the same way you get balance? <br>
+5-Try getting num array without writing a getter for it. Did it work? <br>
+6- Double your balance and check it again, is it doubled? Search for the reason. <br>
+7- Triple your balance, what is the returned value and why? Search for the reason. <br>
+8-Write a method that uses another method in the contract and make sure of your result.</p>
+			<h3 id="02blockchainDB" style='font-weight: bold'>II.	BlockChain Camp Database:</h3>
+
+			
+
+			<p>Create a contract BCCamp that will store information of BlockChain mini boot camp students, this information includes name, age, and if he/she is enjoying or not :D and every student information should be bound with his/her ethereum account address.
+You need to build these functions: 
+</p>
+
+				<p>
+					1. <b>addStudent</b>  which given information of a student and his/her address will add it to the database.
+					<br>
+ 2.  <b>getStudent</b>  which returns an information of a student when it’s given the address of this students (Note: don’t use for loops in this exercise, since you need to pay for every iteration in the for loop, for more information see gas spending in solidity.Also if used the best data type in 1 you can't iterate over its elements.)
+  <br>
+<b>Bonus:</b> <br>
+ 3. <b>getStudents</b>  that should return all of the registered students addresses.
+ <br>4. <b>countStudents</b>
+ that should return how many students are registered.</p> 
+
+
+			<h3 id="03auction" style='font-weight: bold'>III. Auction Contract:</h3>
+
+			
+
+
+			<p>Create a contract Auction that will receive bids from people who are willing to get a specific asset, the asset in our case will be only a password given from the beneficiary 
+to the bidder who offers the highest price after the period of the auction time is over.  
+Your job is to build the following functions:
+
+			</p>
+
+<p>
+	1. <b>Constructor</b> that stores the address of the beneficiary and the password of the asset to be bought, and sets the auction duration to 3 hours from the time of deployment. <br>
+2. <b>bid</b> that will receive an amount of money from this function caller address and if it’s less the the previous bid it will return it to the sender, if it’s more it will keep it and return the previous stored amount to its sender.
+3. <b>showMax</b> which will return the maximum bid so far, and the address of the highest bidder. Note: we can get rid of this function using the events that you’ll learn about in the next sprint. <br>
+4. <b>buyAsset</b>, this function will give an access to the highest bidder to the password of the asset (resemblance of buying the asset) and send the money to the beneficiary. <br>
+5. <b>getAsset</b>, this function will return the password to highest bidder.(Note: We need this function since the password can not be sent to the winner like ethers/tokens. </p>
+
+
+
+			<h3 id="04knapsack" style='font-weight: bold'>IV.	(0-1) Knapsack Algorithem</h3>
+
+
+			<p>Given weights and values of n items, put these items in a knapsack of capacity W to get the maximum total value in the knapsack. In other words, given two integer arrays val[0..n-1] and wt[0..n-1] which represent values and weights associated with n items respectively. Also given an integer W which represents knapsack capacity, find out the maximum value subset of val[] such that sum of the weights of this subset is smaller than or equal to W. You cannot break an item, either pick the complete item, or don’t pick it (0-1 property)
+
+			</p>
+
+
+
+		
+
+			<h1 id="extracredit">Extra Credit</h1>
+
+			<hr>
+<h3 id="04ERC721" style='font-weight: bold'>V.	ERC721 Tokens</h3>
+<p>Go back to the auction question and:
+ a. Turn the asset which is offered to be bought into an ERC721 token that could be transferred. <br> b.
+Set the beneficiary to be the token owner. <br> c.
+Modify buyAsset() function so it will transfer the token from the beneficiary to the highest bidder.
+</p>
+
+			</div></div></div>
+
+			<button class="scrollToTop btn btn-primary"><i class="fas fa-angle-double-up"></i></button>
+
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+			<script>
+
+				$(document).ready(function(){
+
+				$(function() {
+
+				$('a[href*="#"]:not([href="#"])').click(function() {
+
+					if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+					var target = $(this.hash);
+
+					target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+
+					if (target.length) {
+
+						$('html, body').animate({
+
+						scrollTop: target.offset().top
+
+						}, 900);
+
+						return false;
+
+					}
+
+					}
+
+				});
+
+				});
+
+				//Check to see if the window is top if not then display button
+
+				$(window).scroll(function(){
+
+					if ($(this).scrollTop() > 100) {
+
+						$('.scrollToTop').fadeIn();
+
+					} else {
+
+						$('.scrollToTop').fadeOut();
+
+					}
+
+				});
+
+				//Click event to scroll to top
+
+				$('.scrollToTop').click(function(){
+
+					$('html, body').animate({scrollTop : 0},800);
+
+					return false;
+
+				});
+
+				});
+
+			</script>
+
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="dns-prefetch" href="https://assets-cdn.github.com">
+    <link rel="dns-prefetch" href="https://avatars0.githubusercontent.com">
+    <link rel="dns-prefetch" href="https://avatars1.githubusercontent.com">
+    <link rel="dns-prefetch" href="https://avatars2.githubusercontent.com">
+    <link rel="dns-prefetch" href="https://avatars3.githubusercontent.com">
+    <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com">
+    <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
+    
+    
+    
+    <link crossorigin="anonymous" media="all" integrity="sha512-qQ+v+W1uJYfDMrQ/cwCVI+AGTsn1yi4rCU6KX45obe52BoF+WiHNeQ11u63iJA05vyivY57xNbhAsyK4/j1ZIQ=="
+        rel="stylesheet" href="https://assets-cdn.github.com/assets/frameworks-01356238c65ce56a395237b592b58668.css" />
+    <link crossorigin="anonymous" media="all" integrity="sha512-qEdFPL0mFtW45HbszXtVzw4ajnVkg9uH8u73wjmxUg21mCOUgzbBYd72IGryMdL570KewpiPcp4OcwTXl/RBbQ=="
+        rel="stylesheet" href="https://assets-cdn.github.com/assets/github-201faf1692b728b117b5390ea3dce432.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="Box-body p-6">
+        <article class="markdown-body entry-content" itemprop="text">
+            <h1>
+                <a id="user-content-part-two-cryptomoji" class="anchor" aria-hidden="true" href="#part-two-cryptomoji">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Part Two: Cryptomoji</h1>
+            <p>Your task  for part two is to build a working distributed application on
+                <a href="https://www.hyperledger.org/projects/sawtooth" rel="nofollow">Hyperledger Sawtooth</a>, a general-purpose enterprise blockchain. This app will allow users to collect, breed,
+                and trade collectible
+                <em>kaomoji</em>: strings of characters that look like faces, such as (ಠ_ಠ), ( ͡° ͜ʖ ͡°), and ᕕ( ᐛ )ᕗ.</p>
+            <p>Powering your
+                <em>cryptomoji</em> will be a number of components which run in individual "containers" using
+                <a href="https://www.docker.com/community-edition" rel="nofollow">Docker</a>. After cloning this repo and installing
+                <a href="https://nodejs.org/" rel="nofollow">Node</a>, follow the instructions for your OS to set up the tools that you need to run
+                <code>docker</code> and
+                <code>docker-compose</code> from your command line.</p>
+                 <h2> ‣ Days Two & Three</h2>
+            <h2>
+                <a id="user-content-contents" class="anchor" aria-hidden="true" href="#contents">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Contents</h2>
+            <ul>
+               
+                <li>
+                    <a href="#the-project">The Project</a>
+                    <ul>
+                        <li>
+                            <a href="#client">Client</a>
+                        </li>
+                        <li>
+                            <a href="#transaction-processor">Transaction Processor</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#the-design">The Design</a>
+                    <ul>
+                        <li>
+                            <a href="#encoding-data">Encoding Data</a>
+                        </li>
+                        <li>
+                            <a href="#state-entities">State Entities</a>
+                            <ul>
+                                <li>
+                                    <a href="#cryptomoji">Cryptomoji</a>
+                                </li>
+                                <li>
+                                    <a href="#collection">Collection</a>
+                                </li>
+                                <li>
+                                    <a href="#sire-listing">Sire Listing</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#addressing">Addressing</a>
+                            <ul>
+                                <li>
+                                    <a href="#namespace">Namespace</a>
+                                </li>
+                                <li>
+                                    <a href="#resource-prefix">Resource Prefix</a>
+                                </li>
+                                <li>
+                                    <a href="#collection-1">Collection</a>
+                                </li>
+                                <li>
+                                    <a href="#collection-prefix">Collection Prefix</a>
+                                </li>
+                                <li>
+                                    <a href="#cryptomoji-1">Cryptomoji</a>
+                                </li>
+                                <li>
+                                    <a href="#sire-listing-1">Sire Listing</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#payloads">Payloads</a>
+                            <ul>
+                                <li>
+                                    <a href="#create-collection">Create Collection</a>
+                                </li>
+                                <li>
+                                    <a href="#select-sire">Select Sire</a>
+                                </li>
+                                <li>
+                                    <a href="#breed-moji">Breed Moji</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+              
+            </ul>
+            <section id="using-docker">
+            
+        <section id="the-project">
+            <h2>
+                <a id="user-content-the-project" class="anchor" aria-hidden="true" href="#the-project">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>The Project</h2>
+            <p>When building an application on Sawtooth, much of the nitty-gritty of running and validating a blockchain is handled
+                for you. You won't have to verify signatures and hashes, validate blocks, or confirm consensus. Instead, you
+                must consider how you can break up the functionality of your application into discrete transaction payloads,
+                and how these payloads will alter state data. The typical Sawtooth workflow looks something like this:</p>
+            <ol>
+                <li>The user initializes some value (i.e.,
+                    <em>"set 'a' to 1"</em>)</li>
+                <li>The
+                    <em>client</em> takes that action and:
+                    <ul>
+                        <li>encodes it in a payload (maybe simply
+                            <code>{"a": 1}</code>)</li>
+                        <li>wraps that payload in a signed transaction and batch</li>
+                        <li>submits it to the validator</li>
+                    </ul>
+                </li>
+                <li>The validator confirms the transaction and batch are valid</li>
+                <li>The
+                    <em>transaction processor</em> receives the payload and:
+                    <ul>
+                        <li>decodes it</li>
+                        <li>verifies it is a valid action (i.e., 'a'
+                            <em>can</em> be set to 1)</li>
+                        <li>modifies state in a way that satisfies the action (perhaps address
+                            <em>...000000a</em> becomes
+                            <code>1</code>)</li>
+                    </ul>
+                </li>
+                <li>Later, the client might read that state, and decode it for display</li>
+            </ol>
+            <p>So, you are responsible only for building two components (the client and the transaction processor) and for keeping
+                those components in agreement on how to encode payloads and state. This application-wide logic is typically referred
+                to in Sawtooth with the term "transaction family".</p>
+            <p>For Cryptomoji, the client and processor are each in their own directory, with their own tests and their own READMEs.
+                You should develop the components in parallel on a feature-by-feature basis. For example, implement collection
+                creation on
+                <em>both</em> the client and the processor before moving on to sire selection on
+                <em>either</em>.</p>
+            <p>For the broad transaction family design, continue reading
+                <a href="#the-design">below</a>.</p>
+                <section id="client">
+            <h3>
+                <a id="user-content-client" class="anchor" aria-hidden="true" href="#client">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Client</h3>
+            <p>
+                <strong>Directory:</strong>
+                <a href="https://github.com/hyperledger/education-cryptomoji/tree/master/code/part-two/client">code/part-two/client/</a>
+            </p>
+            <p>
+                <strong>README:</strong>
+                <a href="https://github.com/hyperledger/education-cryptomoji/blob/master/code/part-two/client/README.md">code/part-two/client/README.md</a>
+            </p>
+            <p>
+                <strong>Tests:</strong>
+                <a href="https://github.com/hyperledger/education-cryptomoji/tree/master/code/part-two/client/tests">code/part-two/client/tests/</a>
+            </p>
+            <p>A React/Webpack UI which allows users to create collections of cryptomoji, breed them, and (in the extra credit)
+                trade with other users.</p>
+                </section>
+                <section id="transaction-processor">
+            <h3>
+                <a id="user-content-transaction-processor" class="anchor" aria-hidden="true" href="#transaction-processor">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Transaction Processor</h3>
+            <p>
+                <strong>Directory:</strong>
+                <a href="https://github.com/hyperledger/education-cryptomoji/tree/master/code/part-two/processor">code/part-two/processor/</a>
+            </p>
+            <p>
+                <strong>README:</strong>
+                <a href="https://github.com/hyperledger/education-cryptomoji/blob/master/code/part-two/processor/README.md">code/part-two/processor/README.md</a>
+            </p>
+            <p>
+                <strong>Tests:</strong>
+                <a href="https://github.com/hyperledger/education-cryptomoji/tree/master/code/part-two/processor/tests">code/part-two/processor/tests/</a>
+            </p>
+            <p>A Node.js process which validates payloads sent from the client, writing data permanently to the blockchain.</p>
+            </section>
+            </section>
+<section id="the-design">
+            <h2>
+                <a id="user-content-the-design" class="anchor" aria-hidden="true" href="#the-design">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>The Design</h2>
+            <p>There are a few basic questions you need to answer when designing your transaction family:</p>
+            <ul>
+                <li>What do my transaction payloads look like?</li>
+                <li>What does data stored in state look like?</li>
+                <li>What addresses in state is that data stored under?</li>
+            </ul>
+            <p>Let's answer these questions for
+                <em>Cryptomoji</em>.</p>
+            <h3>
+                <a id="encoding-data" class="anchor" aria-hidden="true" href="#encoding-data">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Encoding Data</h3>
+            <p>For simplicity and familiarity, we are going to encode both payloads and state data as JSON. To be clear, JSON would
+                <em>not</em> be a great choice in production. It is not space efficient; worse, it is not
+                <em>deterministic</em>. Determinism is very important when writing state to the blockchain. Many many nodes will
+                attempt to the write the same state. If that state is even slightly different (like, say, the keys are in a different
+                order), the validators will think the transactions are invalid.</p>
+            <p>But JSON is easy and accessible, especially in Javascript. And it is possible to
+                <a href="https://stackoverflow.com/a/16168003/4284401"
+                    rel="nofollow">create sorted JSON strings</a>, which should solve the determinism issue (at least, well enough for your purposes).
+                Of course, JSON itself isn't quite enough, because we need
+                <em>raw bytes
+                </em>, not a string. For byte encoding, we are going to use Node's
+                <a href="https://nodejs.org/api/buffer.html" rel="nofollow">Buffers</a> again.</p>
+            <p>So your encoding should look something like this:</p>
+            <div class="highlight highlight-source-js">
+                <pre><span class="pl-smi">Buffer</span>.<span class="pl-en">from</span>(<span class="pl-c1">JSON</span>.<span class="pl-c1">stringify</span>(dataObj, <span class="pl-en">getSortedKeys</span>(dataObj)))</pre>
+            </div>
+            <p>And decoding would look like this:</p>
+            <div class="highlight highlight-source-js">
+                <pre><span class="pl-c1">JSON</span>.<span class="pl-c1">parse</span>(<span class="pl-smi">dataBytes</span>.<span class="pl-c1">toString</span>())</pre>
+            </div>
+            <h3>
+                <a id="state-entities" class="anchor" aria-hidden="true" href="#state-entities">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>State Entities</h3>
+            <p>In order to make the Cryptomoji app work, your transaction processor must write several entities to state.</p>
+            <h4>
+                <a id="cryptomoji" class="anchor" aria-hidden="true" href="#cryptomoji">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Cryptomoji</h4>
+            <div class="highlight highlight-source-json">
+                <pre>{
+        <span class="pl-s"><span class="pl-pds">"</span>dna<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>&lt;hex string&gt;<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>owner<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>&lt;string, public key&gt;<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>breeder<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>&lt;string, moji address&gt;<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>sire<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>&lt;string, moji address&gt;<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>bred<span class="pl-pds">"</span></span>: [ <span class="pl-s"><span class="pl-pds">"</span>&lt;strings, moji addresses&gt;<span class="pl-pds">"</span></span> ],
+        <span class="pl-s"><span class="pl-pds">"</span>sired<span class="pl-pds">"</span></span>: [ <span class="pl-s"><span class="pl-pds">"</span>&lt;strings, moji addresses&gt;<span class="pl-pds">"</span></span> ]
+    }</pre>
+            </div>
+            <p>Cryptomoji are unique, breedable critters. Each has a DNA string of 36 hex characters, which is converted into an
+                adorable
+                <em>kaomoji</em> for display (using a parsing tool that is included with the client). Aside from storing the identity
+                of the owner, the string will also include breeding information: the identities of the parents (breeder and sire),
+                as well as the identities of any children produced, either in the role of a breeder or a sire (bred/sired).</p>
+            <h4>
+                <a id="collection" class="anchor" aria-hidden="true" href="#collection">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Collection</h4>
+            <div class="highlight highlight-source-json">
+                <pre>{
+        <span class="pl-s"><span class="pl-pds">"</span>key<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>&lt;string, public key&gt;<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>moji<span class="pl-pds">"</span></span>: [ <span class="pl-s"><span class="pl-pds">"</span>&lt;strings, moji addresses&gt;<span class="pl-pds">"</span></span> ]
+    }</pre>
+            </div>
+            <p>A collection of cryptomoji owned by a public key. Each new collection will be created with three new "generation
+                0" cryptomoji with no breeders or sires.</p>
+            <h4>
+                <a id="sire-listing" class="anchor" aria-hidden="true" href="#sire-listing">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Sire Listing</h4>
+            <div class="highlight highlight-source-json">
+                <pre>{
+        <span class="pl-s"><span class="pl-pds">"</span>owner<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>&lt;string, public key&gt;<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>sire<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>&lt;string, moji address&gt;<span class="pl-pds">"</span></span>
+    }</pre>
+            </div>
+            <p>Each collection can select one cryptomoji as a sire. This makes the sire publicly available for other collections
+                to use for breeding.</p>
+            <h3>
+                <a id="addressing" class="anchor" aria-hidden="true" href="#addressing">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Addressing</h3>
+            <p>A state address in Sawtooth is 35 bytes long, typically expressed as 70 hexadecimal characters. By convention, the
+                first six characters are reserved for a namespace for the transaction family, allowing many families to coexist
+                on the same blockchain. The remaining 64 characters are up to each family to define.
+            </p>
+            <p>We will follow this convention with a six-character namespace
+                <code>5f4d76</code>, which is generated from the first six characters of a SHA-512 hash of the family name
+                <em>“cryptomoji”</em>. Each state entity will have their own scheme for how they use the remaining 64 characters
+                of their address.</p>
+            <h4>
+                <a id="collection-1" class="anchor" aria-hidden="true" href="#collection-1">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Collection</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Namespace (6)</th>
+                        <th>Type prefix (2)</th>
+                        <th>Identifier hash (62)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <code>5f4d76</code>
+                        </td>
+                        <td>
+                            <code>00</code>
+                        </td>
+                        <td>
+                            <code>1b96dbb5322e410816dd41d93571801e751a4f0cc455d8bd58f5f8ad3d67cb</code>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>A collection will be stored first under a one-byte type prefix:
+                <code>00</code>. The remaining 62 characters are the first 62 characters of a SHA-512 hash of its public key.</p>
+            <p>For example, the hash used to create the address above might be generated like this:
+            </p>
+            <div class="highlight highlight-source-js">
+                <pre><span class="pl-en">createHash</span>(<span class="pl-s"><span class="pl-pds">'</span>sha512<span class="pl-pds">'</span></span>).<span class="pl-en">update</span>(<span class="pl-s"><span class="pl-pds">'</span>034f355bdcb7cc0af728ef3cceb9615d90684bb5b2ca5f859ab0f0b704075871aa<span class="pl-pds">'</span></span>).<span class="pl-en">digest</span>(<span class="pl-s"><span class="pl-pds">'</span>hex<span class="pl-pds">'</span></span>);
+    <span class="pl-c"><span class="pl-c">//</span> 1b96dbb5322e410816dd41d93571801e751a4f0cc455d8bd58f5f8ad3d67cbee2e9e5c5df5bb65c282f1aaf516cf7cc5a2f7ff592a80cf920e1abaab8d29279f</span></pre>
+            </div>
+            <h4>
+                <a id="cryptomoji-1" class="anchor" aria-hidden="true" href="#cryptomoji-1">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Cryptomoji</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Namespace (6)</th>
+                        <th>Type prefix (2)</th>
+                        <th>Collection prefix (8)</th>
+                        <th>Identifier hash (54)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <code>5f4d76</code>
+                        </td>
+                        <td>
+                            <code>01</code>
+                        </td>
+                        <td>
+                            <code>1b96dbb5</code>
+                        </td>
+                        <td>
+                            <code>0c8514ab2a7cf361062601716bcd762097e41f9011a5e6f8ff6c5f</code>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Cryptomoji need to be divided up by who owns them. That way, you can query a partial address to get all of the cryptomoji
+                owned by a public key. So, after a type prefix of
+                <code>01</code>, the next eight characters of a cryptomoji's address are the collection prefix (the first eight characters from
+                a SHA-512 hash of the owner's public key). The final 54 characters of a cryptomoji’s address are the first 54
+                characters from a SHA-512 hash of its DNA string.</p>
+            <h4>
+                <a id="sire-listing-1" class="anchor" aria-hidden="true" href="#sire-listing-1">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Sire Listing</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Namespace (6)</th>
+                        <th>Type prefix (2)</th>
+                        <th>Identifier hash (62)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <code>5f4d76</code>
+                        </td>
+                        <td>
+                            <code>02</code>
+                        </td>
+                        <td>
+                            <code>1b96dbb5322e410816dd41d93571801e751a4f0cc455d8bd58f5f8ad3d67cb</code>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Because a collection is only allowed one sire, the sire listings can be stored under an address that is almost identical
+                to the collection address. The identifier hash is the same first 62 characters of a SHA-512 hash of the owner's
+                public key. The only difference between the address of a collection and its sire listing will be the type prefix
+                <code>02</code>.</p>
+            <h3>
+                <a id="payloads" class="anchor" aria-hidden="true" href="#payloads">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Payloads</h3>
+            <p>Cryptomoji payloads will be objects, each with an
+                <code>"action"</code> key that designates what event should occur in the transaction processor. Each action is designated by a specific
+                string written in CONSTANT_CASE. Any additional data will be included in other keys specific to that payload.</p>
+            <h4>
+                <a id="create-collection" class="anchor" aria-hidden="true" href="#create-collection">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Create Collection</h4>
+            <div class="highlight highlight-source-json">
+                <pre>{
+        <span class="pl-s"><span class="pl-pds">"</span>action<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>CREATE_COLLECTION<span class="pl-pds">"</span></span>
+    }</pre>
+            </div>
+            <p>
+                <em>Validation:</em>
+            </p>
+            <ul>
+                <li>Signer must not already have a collection</li>
+            </ul>
+            <p>Creates a new collection for the signer of the transaction with three new pseudo-random (but deterministic!) cryptomoji.
+                Like other actions, the identity of the signer will come from the public key in the transaction header, so it
+                is not included in the payload itself.</p>
+            <h4>
+                <a id="select-sire" class="anchor" aria-hidden="true" href="#select-sire">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Select Sire</h4>
+            <div class="highlight highlight-source-json">
+                <pre>{
+        <span class="pl-s"><span class="pl-pds">"</span>action<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>SELECT_SIRE<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>sire<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>&lt;string, moji address&gt;<span class="pl-pds">"</span></span>
+    }</pre>
+            </div>
+            <p>
+                <em>Validation:</em>
+            </p>
+            <ul>
+                <li>Signer must have a collection</li>
+                <li>Cryptomoji must exist</li>
+                <li>Signer must own the sire</li>
+            </ul>
+            <p>Lists a cryptomoji as a collection's sire, indicating that it is available for other collections to breed with. A
+                collection can have only one sire at a time.</p>
+            <h4>
+                <a id="breed-moji" class="anchor" aria-hidden="true" href="#breed-moji">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Breed Moji</h4>
+            <div class="highlight highlight-source-json">
+                <pre>{
+        <span class="pl-s"><span class="pl-pds">"</span>action<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>BREED_MOJI<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>sire<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>&lt;string, moji address&gt;<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>breeder<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>&lt;string, moji address&gt;<span class="pl-pds">"</span></span>
+    }</pre>
+            </div>
+            <p>
+                <em>Validation:</em>
+            </p>
+            <ul>
+                <li>Signer must have a collection</li>
+                <li>Cryptomoji must exist</li>
+                <li>Signer must own the breeder</li>
+                <li>Sire must be listed as a sire</li>
+            </ul>
+            <p>Creates a new cryptomoji for the owner of the
+                <em>breeder</em>. The new cryptomoji is a pseudo-random combination of the DNA from the breeder and the sire.</p>
+                </section>
+           
+            <p style="font-size:18px"><i><b>Good luck!</b></i></p>
+        </article>
+    </div>
+</body>
+</html>

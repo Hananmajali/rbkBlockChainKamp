@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>
-			DIY Blockchain
+			DIY Blockchain Sprint
 		</title>
 	</head>
 <link rel="icon" href="Sawtooth.png" type="image/x-icon"/>
@@ -11,56 +11,75 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="style.css"/>
 	<body class='container'>
-		<div class="main-content"><div><div class="page"><h1 id="chatterbox-server"><strong>Part One: DIY Blockchain</strong></h1>
+		<div class="main-content"><div><div class="page"><h1 id="chatterbox-server"><strong>Part One: DIY Blockchain sprint</strong></h1>
 		<hr>
-			<p>What better way to learn about blockchains than to build your own? In this section you will construct your own simple blockchain in the vein of Bitcoin and other cryptocurrencies. Using cryptographic private/public key pairs, users will be able to create transactions sending funds from their public key to that of another user. Like any other blockchain, these transactions will become a permanent immutable part of the ledger, protected by the hashes that link each block to the one that came before it in the chain.</p>
 			<ul>
 				<li><a href="#getting-started">Getting Started and Running Tests</a></li>
 				<li><a href="#curriculum">The Curriculum</a>
 					<ul>
 						<li><a href="#blockchainlecture">Blockchain Lecture</a></li>
 						<li><a href="#zulfikar">Zulfikar Ramzan: Bitcoin</a></li>
-					</ul>
+					</ul>				
 				</li>
 				<li><a href="#theproject">The Project</a>
 					<ul>
 						<li><a href="#01signing">1- Signing</a></li>
 						<li><a href="#02blockchain">2- Blockchain</a></li>
 						<li><a href="#03validation">3- Validation</a></li>
-					</ul>
+					</ul>				
 				</li>
-				<li><a href="#extracredit">Extra Credit</a>
+				<li><a href="#advancedContent">Advanced Content</a>
 					<ul>
 						<li><a href="#04mining">4- Mining</a></li>
 					</ul>
 				</li>
+			</ul><br>
+			<h2><strong>Keywords</strong></h2><hr>
+			<ul>
+				<li><a href="https://www.hyperledger.org/projects/sawtooth" target="_blank">Sawtooth</a></li>
+				<li><a href="https://github.com/cryptocoinjs/secp256k1-node#usage" target="_blank">Secp256k1</a></li>
+				<li><a href="https://nodejs.org/api/crypto.html#crypto_crypto_createhash_algorithm_options" target="_blank">Crypto.createHash</a></li>
+				<li><a href="https://nodejs.org/api/buffer.html#buffer_class_method_buffer_from_string_encoding" target="_blank">Buffer.from</a></li>
+				<li><a href="https://nodejs.org/api/buffer.html#buffer_buf_tostring_encoding_start_end" target="_blank">Buffer.toString</a></li>
 			</ul>
+
+			<h2><strong>High Level Goals of this Sprint</strong></h2><hr>
+			
+			<ul>
+				<li>Learn Blockchain data structure and the technologies that power it</li>
+				<li>Understand inner workings of the Bitcoin protocol</li>
+				<li>Practice Blockchain by constructing your own simple blockchain in the vein of Bitcoin and other cryptocurrencies.</li>
+			</ul>
+			
+			<h2><strong>Bare Minimum Requirements</strong></h2><hr>
+			<ul class="task-list">
+				<li>Understanding cryptographic algorithm used by Bitcoin by building a simple signing API using Secp256k1</li>
+				<li>Getting familiar with the concept of hashing</li>
+				<li>Understanding Blockchain validation</li>	
+				</ul>
+			
 			<h2 id="getting-started"><strong>Getting Started and Running Tests</strong></h2>
 			<hr>
-
+			
 			<p>This section uses Node and npm to install dependencies and run tests. To begin, first install Node 8 or higher. Then run these commands from your terminal:</p>
 			<code class="code">
-				cd code/part-one/<br>
-				npm install<br>
-				npm test</code>
+				1- cd code/part-one/<br>
+				2- npm install<br>
+				3- npm test</code>
 			<p><br>
 				You should see a number of tests run, most of which are failing.
-				<br>
-
-				(╯︵╰,)
-
 				<br><br>
 				Your job, in short, is to make these tests pass. As you work your way through the sections below, keep running <code class="code">&nbspnpm test </code>to check your progress and get clues to what you should do next.
-			</p>
-
-
-			<h2 id="curriculum"><strong>The Curriculum</strong></h2>
-			<hr>
+			</p><br>
+		
+		
+			<h2 id="curriculum"><strong>The Curriculum</strong></h2><hr>
+			
 			<h3 id="blockchainlecture"><strong>Blockchain Lecture</strong></h3>
 
 			<p>
 				The first part of the Cryptomoji lecture is a brief overview of the blockchain data structure and the technologies that power it:
-				hashing, signatures, and consensus. The lecture itself is 15 minutes long with an
+				hashing, signatures, and consensus. The lecture itself is 15 minutes long with an 
 				additional 10 minutes of Q&A. They are included in this repo as two videos:
 			</p>
 
@@ -97,7 +116,7 @@
 				<li><a href="https://nodejs.org/api/buffer.html#buffer_class_method_buffer_from_string_encoding" rel="nofollow">Buffer.from</a></li>
 				<li><a href="https://nodejs.org/api/buffer.html#buffer_buf_tostring_encoding_start_end" rel="nofollow">Buffer.toString</a></li>
 			</ul>
-
+			
 			<p>Signatures form the basis for verifiable identity and correctness on most, if not all, blockchains. First, a private key is generated; it's basically just a random set of bytes. This key is kept secret. Next, a cryptographic algorithm uses these bytes to derive a public key which can be widely shared. Finally, a signature is generated by combining the private key with some message.
 				 This signature, the message, and the public key are then all distributed together.</p>
 				 <div class='panel panel-default'>
@@ -253,7 +272,7 @@
 				<li><strong>breakChain</strong></li>
 			</ul><br>
 
-			<h1 id="extracredit">Extra Credit</h1>
+			<h1 id="advancedContent">Advanced Content</h1>
 			<hr>
 
 			<p>While the next module can help you gain a deeper understanding of consensus
@@ -279,7 +298,7 @@
 				Fault Tolerance</em>: they not only ensure correctness, but also prevent bad actors
 				from taking over the system and rewriting large sections of the blockchain.
 				Zulfikar Ramzan does an excellent job of
-				<a href="https://www.khanacademy.org/economics-finance-domain/core-finance/money-and-banking/bitcoin/v/bitcoin-proof-of-work" target="_blank" rel="nofollow">explaining how this works for Bitcoin</a>,
+				<a href="./ZulfikarRamzanBitcoin.html#proofofwork" target="_blank" rel="nofollow">explaining how this works for Bitcoin</a>,
 				but the short version is that if you randomize who gets to create new blocks,
 				and always select the longest chain available, a bad actor would need to take
 				over 51% of the network to be effective. In a highly decentralized network,
@@ -303,7 +322,7 @@
 			<ul>
 				<li><strong>isMineableChainValid</strong></li>
 			</ul>
-
+			
 		</div></div>
 			</div>
 			<button class="scrollToTop btn btn-primary"><i class="fas fa-angle-double-up"></i></button>

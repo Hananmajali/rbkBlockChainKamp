@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="dns-prefetch" href="https://assets-cdn.github.com">
+    <link rel="dns-prefetch" href="https://avatars0.githubusercontent.com">
+    <link rel="dns-prefetch" href="https://avatars1.githubusercontent.com">
+    <link rel="dns-prefetch" href="https://avatars2.githubusercontent.com">
+    <link rel="dns-prefetch" href="https://avatars3.githubusercontent.com">
+    <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com">
+    <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
+    
+    
+    
+    <link crossorigin="anonymous" media="all" integrity="sha512-qQ+v+W1uJYfDMrQ/cwCVI+AGTsn1yi4rCU6KX45obe52BoF+WiHNeQ11u63iJA05vyivY57xNbhAsyK4/j1ZIQ=="
+        rel="stylesheet" href="https://assets-cdn.github.com/assets/frameworks-01356238c65ce56a395237b592b58668.css" />
+    <link crossorigin="anonymous" media="all" integrity="sha512-qEdFPL0mFtW45HbszXtVzw4ajnVkg9uH8u73wjmxUg21mCOUgzbBYd72IGryMdL570KewpiPcp4OcwTXl/RBbQ=="
+        rel="stylesheet" href="https://assets-cdn.github.com/assets/github-201faf1692b728b117b5390ea3dce432.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="Box-body p-6">
+        <article class="markdown-body entry-content" itemprop="text">
+            <h1>
+                <a id="user-content-part-two-cryptomoji" class="anchor" aria-hidden="true" href="#part-two-cryptomoji">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Part Two: Cryptomoji</h1>
+            <p>Your task  for part two is to build a working distributed application on
+                <a href="https://www.hyperledger.org/projects/sawtooth" rel="nofollow">Hyperledger Sawtooth</a>, a general-purpose enterprise blockchain. This app will allow users to collect, breed,
+                and trade collectible
+                <em>kaomoji</em>: strings of characters that look like faces, such as (ಠ_ಠ), ( ͡° ͜ʖ ͡°), and ᕕ( ᐛ )ᕗ.</p>
+            <p>Powering your
+                <em>cryptomoji</em> will be a number of components which run in individual "containers" using
+                <a href="https://www.docker.com/community-edition" rel="nofollow">Docker</a>. After cloning this repo and installing
+                <a href="https://nodejs.org/" rel="nofollow">Node</a>, follow the instructions for your OS to set up the tools that you need to run
+                <code>docker</code> and
+                <code>docker-compose</code> from your command line.</p>
+                 <h2> ‣ Day Four</h2>
+            <h2>
+                <a id="user-content-contents" class="anchor" aria-hidden="true" href="#contents">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Contents</h2>
+            <ul>
+               
+                <li>
+                    <a href="#extra-credit">Extra Credit</a>
+                    <ul>
+                        <li>
+                            <a href="#state-entities-1">State Entities</a>
+                            <ul>
+                                <li>
+                                    <a href="#offer">Offer</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#addressing-1">Addressing</a>
+                            <ul>
+                                <li>
+                                    <a href="#offer-1">Offer</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#payloads-1">Payloads</a>
+                            <ul>
+                                <li>
+                                    <a href="#create-offer">Create Offer</a>
+                                </li>
+                                <li>
+                                    <a href="#add-response">Add Response</a>
+                                </li>
+                                <li>
+                                    <a href="#accept-response">Accept Response</a>
+                                </li>
+                                <li>
+                                    <a href="#cancel-offer">Cancel Offer</a>
+                                </li>
+                                <li>
+                                    <a href="#cancel-response">Cancel Response</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#nightmare-mode">Nightmare Mode</a>
+                </li>
+            </ul>
+            
+            <h2>
+                <a id="extra-credit" class="anchor" aria-hidden="true" href="#extra-credit">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Extra Credit</h2>
+            <p>For extra credit, add the capability for collections to trade cryptomoji between each other. This is harder than
+                it sounds. One user will need to create an offer, while others add responses until the offer owner accepts them.
+                This is a process that spans multiple transactions, never mind the possibility that one party might change their
+                mind and decide to cancel an offer or response.</p>
+            <h3>
+                <a id="state-entities-1" class="anchor" aria-hidden="true" href="#state-entities-1">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>State Entities</h3>
+            <h4>
+                <a id="offer" class="anchor" aria-hidden="true" href="#offer">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Offer</h4>
+            <div class="highlight highlight-source-json">
+                <pre>{
+        <span class="pl-s"><span class="pl-pds">"</span>owner<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>&lt;string, public key&gt;<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>moji<span class="pl-pds">"</span></span>: [ <span class="pl-s"><span class="pl-pds">"</span>&lt;strings, moji addresses&gt;<span class="pl-pds">"</span></span> ],
+        <span class="pl-s"><span class="pl-pds">"</span>responses<span class="pl-pds">"</span></span>: [
+            {
+                <span class="pl-s"><span class="pl-pds">"</span>approver<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>&lt;string, public key&gt;<span class="pl-pds">"</span></span>,
+                <span class="pl-s"><span class="pl-pds">"</span>moji<span class="pl-pds">"</span></span>: [ <span class="pl-s"><span class="pl-pds">"</span>&lt;strings, moji addresses&gt;<span class="pl-pds">"</span></span> ]
+            }
+        ]
+    }</pre>
+            </div>
+            <p>Offers are a way of effectively creating a multi-signer transaction. One user creates the offer, then other users
+                add responses to it. When the offer owner sees a response they like, they can accept it and exchange the cryptomoji.</p>
+            <p>It is also possible for offer owners to request moji by adding responses to their own offer. These responses would
+                then be approved by the mojis' owner. The "approver" key identifies the collection whose owner is required to
+                approve a response.</p>
+            <h3>
+                <a id="addressing-1" class="anchor" aria-hidden="true" href="#addressing-1">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Addressing</h3>
+            <h4>
+                <a id="offer-1" class="anchor" aria-hidden="true" href="#offer-1">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Offer</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Namespace (6)</th>
+                        <th>Type prefix (2)</th>
+                        <th>Collection prefix (8)</th>
+                        <th>Identifier hash (54)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <code>5f4d76</code>
+                        </td>
+                        <td>
+                            <code>03</code>
+                        </td>
+                        <td>
+                            <code>1b96dbb5</code>
+                        </td>
+                        <td>
+                            <code>f0b9646d76c0e89bb8024d7ff2f7b4cde935f91c703f1a1a888e4a</code>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Like cryptomoji, offers are owned by a collection. In addition to their type prefix (
+                <code>03</code>), an offer has an eight-character prefix, which is the first eight characters of a SHA-512 hash of the owner's
+                public key. The final 54 characters are the first 54 characters of a SHA-512 hash. In this case, the hash is
+                generated from a string created by sorting the addresses of the cryptomoji being offered, then concatenating
+                those addresses with no spaces.</p>
+            <p>For example, we might generate the hash for the address above like this:</p>
+            <div class="highlight highlight-source-js">
+                <pre><span class="pl-k">const</span> <span class="pl-c1">moji1</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>5f4d76011b96dbb50c8514ab2a7cf361062601716bcd762097e41f9011a5e6f8ff6c5f<span class="pl-pds">'</span></span>;
+    <span class="pl-k">const</span> <span class="pl-c1">moji2</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>5f4d7601bddce3731459230a5a425d9e71ad0110f0e5a76ed88b8cfc1c087b10682492<span class="pl-pds">'</span></span>;
+    
+    <span class="pl-en">createHash</span>(<span class="pl-s"><span class="pl-pds">'</span>sha512<span class="pl-pds">'</span></span>).<span class="pl-en">update</span>(moji1 <span class="pl-k">+</span> moji2).<span class="pl-en">digest</span>(<span class="pl-s"><span class="pl-pds">'</span>hex<span class="pl-pds">'</span></span>);
+    <span class="pl-c"><span class="pl-c">//</span> f0b9646d76c0e89bb8024d7ff2f7b4cde935f91c703f1a1a888e4a8f6c62ad9a97664eb27bb981021c30d02e3417e03948d7fae7a13ba080e9bf2b421818a80b</span></pre>
+            </div>
+            <h3>
+                <a id="payloads-1" class="anchor" aria-hidden="true" href="#payloads-1">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Payloads</h3>
+            <h4>
+                <a id="create-offer" class="anchor" aria-hidden="true" href="#create-offer">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Create Offer</h4>
+            <div class="highlight highlight-source-json">
+                <pre>{
+        <span class="pl-s"><span class="pl-pds">"</span>action<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>CREATE_OFFER<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>moji<span class="pl-pds">"</span></span>: [ <span class="pl-s"><span class="pl-pds">"</span>&lt;strings, moji addresses&gt;<span class="pl-pds">"</span></span> ]
+    }</pre>
+            </div>
+            <p>
+                <em>Validation:</em>
+            </p>
+            <ul>
+                <li>Signer must have a collection</li>
+                <li>Cryptomoji must exist</li>
+                <li>Signer must own the cryptomoji</li>
+                <li>Cryptomoji must not be listed as a sire</li>
+            </ul>
+            <p>Creates an offer to trade some of a collection's moji. Owners of other collections can add responses to the offer.</p>
+            <h4>
+                <a id="add-response" class="anchor" aria-hidden="true" href="#add-response">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Add Response</h4>
+            <div class="highlight highlight-source-json">
+                <pre>{
+        <span class="pl-s"><span class="pl-pds">"</span>action<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>ADD_RESPONSE<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>offer<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>&lt;string, offer address&gt;<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>moji<span class="pl-pds">"</span></span>: [ <span class="pl-s"><span class="pl-pds">"</span>&lt;strings, moji addresses&gt;<span class="pl-pds">"</span></span> ]
+    }
+    </pre>
+            </div>
+            <p>
+                <em>Validation:</em>
+            </p>
+            <ul>
+                <li>Signer must have a collection</li>
+                <li>Cryptomoji must exist</li>
+                <li>Offer must exist</li>
+                <li>Signer must own the moji
+                    <em>or</em> be the owner of the offer</li>
+                <li>No identical response already exists</li>
+            </ul>
+            <p>Adds a response to an offer. This is the other side of the trade. The owner of the offer can add responses to their
+                own offer, suggesting a trade for moji owned by someone else. Otherwise, the response must come from the owner
+                of the moji.
+            </p>
+            <h4>
+                <a id="accept-response" class="anchor" aria-hidden="true" href="#accept-response">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Accept Response</h4>
+            <div class="highlight highlight-source-json">
+                <pre>{
+        <span class="pl-s"><span class="pl-pds">"</span>action<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>ACCEPT_RESPONSE<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>offer<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>&lt;string, offer address&gt;<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>response<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>&lt;number, index of response&gt;<span class="pl-pds">"</span></span>
+    }</pre>
+            </div>
+            <p>
+                <em>Validation:</em>
+            </p>
+            <ul>
+                <li>Signer must have a collection</li>
+                <li>Signer must be the "approver" on the response</li>
+                <li>Exchanged cryptomoji must be owned by the appropriate parties</li>
+                <li>Response index must correspond to a valid response on the offer</li>
+            </ul>
+            <p>Accepts the response, exchanges the responder's cryptomoji for the cryptomoji originally listed in the offer, then
+                deletes the offer from state.</p>
+            <h4>
+                <a id="cancel-offer" class="anchor" aria-hidden="true" href="#cancel-offer">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Cancel Offer</h4>
+            <div class="highlight highlight-source-json">
+                <pre>{
+      <span class="pl-s"><span class="pl-pds">"</span>action<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>CANCEL_OFFER<span class="pl-pds">"</span></span>,
+      <span class="pl-s"><span class="pl-pds">"</span>offer<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>&lt;string, offer address&gt;<span class="pl-pds">"</span></span>
+    }</pre>
+            </div>
+            <p>
+                <em>Validation:</em>
+            </p>
+            <ul>
+                <li>Signer must have a collection</li>
+                <li>Offer must exist</li>
+                <li>Signer must own the offer</li>
+            </ul>
+            <p>Deletes the offer from state with no changes in moji ownership.</p>
+            <h4>
+                <a id="cancel-response" class="anchor" aria-hidden="true" href="#cancel-response">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Cancel Response</h4>
+            <div class="highlight highlight-source-json">
+                <pre>{
+        <span class="pl-s"><span class="pl-pds">"</span>action<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>CANCEL_RESPONSE<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>offer<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>&lt;string, offer address&gt;<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>response<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>&lt;number, index of response&gt;<span class="pl-pds">"</span></span>
+    }</pre>
+            </div>
+            <p>
+                <em>Validation:</em>
+            </p>
+            <ul>
+                <li>Signer must have a collection</li>
+                <li>Offer must exist</li>
+                <li>Signer must be the creator of the response</li>
+            </ul>
+            <p>Deletes the response from the offer's list of responses, leaving
+                <code>null</code> in its place.
+            </p>
+            <h2>
+                <a id="nightmare-mode" class="anchor" aria-hidden="true" href="#nightmare-mode">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Nightmare Mode</h2>
+            <p>In the original Cryptokitties app on Ethereum, much was done using timestamps. After breeding, sires had a short
+                period of downtime, during which they could not be used to sire again. Meanwhile, breeders had an exponentially
+                increasing pregnancy time to create a child. Adding this gameplay feature to Cryptomoji will require that you
+                understand and use Sawtooth's
+                <a href="https://sawtooth.hyperledger.org/docs/core/releases/1.0/transaction_family_specifications/blockinfo_transaction_family.html"
+                    rel="nofollow">Block Info TP</a>.</p>
+            <br>
+            <p style="font-size:18px"><i><b>Good luck!</b></i></p>
+        </article>
+    </div>
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="dns-prefetch" href="https://assets-cdn.github.com">
+    <link rel="dns-prefetch" href="https://avatars0.githubusercontent.com">
+    <link rel="dns-prefetch" href="https://avatars1.githubusercontent.com">
+    <link rel="dns-prefetch" href="https://avatars2.githubusercontent.com">
+    <link rel="dns-prefetch" href="https://avatars3.githubusercontent.com">
+    <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com">
+    <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
+    
+    
+    
+    <link crossorigin="anonymous" media="all" integrity="sha512-qQ+v+W1uJYfDMrQ/cwCVI+AGTsn1yi4rCU6KX45obe52BoF+WiHNeQ11u63iJA05vyivY57xNbhAsyK4/j1ZIQ=="
+        rel="stylesheet" href="https://assets-cdn.github.com/assets/frameworks-01356238c65ce56a395237b592b58668.css" />
+    <link crossorigin="anonymous" media="all" integrity="sha512-qEdFPL0mFtW45HbszXtVzw4ajnVkg9uH8u73wjmxUg21mCOUgzbBYd72IGryMdL570KewpiPcp4OcwTXl/RBbQ=="
+        rel="stylesheet" href="https://assets-cdn.github.com/assets/github-201faf1692b728b117b5390ea3dce432.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="Box-body p-6">
+        <article class="markdown-body entry-content" itemprop="text">
+            <h1>
+                <a id="user-content-part-two-cryptomoji" class="anchor" aria-hidden="true" href="#part-two-cryptomoji">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Part Two: Cryptomoji</h1>
+            <p>Your task  for part two is to build a working distributed application on
+                <a href="https://www.hyperledger.org/projects/sawtooth" rel="nofollow">Hyperledger Sawtooth</a>, a general-purpose enterprise blockchain. This app will allow users to collect, breed,
+                and trade collectible
+                <em>kaomoji</em>: strings of characters that look like faces, such as (ಠ_ಠ), ( ͡° ͜ʖ ͡°), and ᕕ( ᐛ )ᕗ.</p>
+            <p>Powering your
+                <em>cryptomoji</em> will be a number of components which run in individual "containers" using
+                <a href="https://www.docker.com/community-edition" rel="nofollow">Docker</a>. After cloning this repo and installing
+                <a href="https://nodejs.org/" rel="nofollow">Node</a>, follow the instructions for your OS to set up the tools that you need to run
+                <code>docker</code> and
+                <code>docker-compose</code> from your command line.</p>
+
+                <h2> ‣ Key Words</h2>
+                <ul>
+                    <li>Hyperledger Sawtooth</li>
+                    <li>Permissioned Blockchain</li>
+                    <li>Docker</li>
+                    <li>Transaction Processor</li>
+                    <li>Transaction Payloads </li>
+
+                </ul>
+               <h2> ‣  High Level Goals of this Sprint</h2>
+               <ul>
+                   <li> Learn what Sawtooth is and get familiarised with its architecture.</li>
+                   <li> Learn how to write a transaction processor.</li>
+                   <li> Learn how to build transaction handlers which the processor is going to run and send transactions to. </li>
+                   <li>Learn how to write the client – the source of the transactions.</li>
+
+               </ul>
+                <h2> ‣ Day One</h2>
+            <h2>
+                <a id="user-content-contents" class="anchor" aria-hidden="true" href="#contents">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+
+                </a>Contents</h2>
+            <ul>
+                <li>
+                    <a href="#using-docker">Using Docker</a>
+                    <ul>
+                        <li>
+                            <a href="#components">Components</a>
+                        </li>
+                        <li>
+                            <a href="#startstop-commands">Start/Stop Commands</a>
+                        </li>
+                        <li>
+                            <a href="#entering-a-container">Entering a Container</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#the-curriculum">The Curriculum</a>
+                    <ul>
+                        <li>
+                            <a href="#sawtooth-documentation">Sawtooth Documentation</a>
+                        </li>
+                        <li>
+                            <a href="#app-development-lecture">App Development Lecture</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                      
+            </ul>
+            <section id="using-docker">
+            <h2>
+                <a id="user-content-using-docker" class="anchor" aria-hidden="true" href="#using-docker">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Using Docker</h2>
+            <p>Docker is a virtualization tool that makes it easy to deploy code in a variety of environments. Dockerfiles create
+                "images" with all the dependencies your code needs installed. From these images, you can create, run, and destroy
+                individual "containers" at will. This is, in effect, like having every component running on its own virtual computer
+                which you can reset to factory settings at any time. It's a profoundly useful tool that takes a little getting
+                used to, but is worth getting familiar with.</p>
+                <section id="components">
+            <h3>
+                <a id="user-content-components" class="anchor" aria-hidden="true" href="#components">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Components</h3>
+            <p>This
+                <code>part-two</code> directory includes a
+                <a href="/dareenkhanash/education-cryptomoji/blob/master/code/part-two/docker-compose.yaml">docker-compose</a> file that contains the instructions for Docker to start up multiple components and network
+                them together. This includes both custom components built from your source code and some prepackaged Sawtooth
+                components downloaded from
+                <a href="https://hub.docker.com/search/?isAutomated=0&amp;isOfficial=0&amp;page=1&amp;pullCount=0&amp;q=sawtooth&amp;starCount=0"
+                    rel="nofollow">DockerHub</a>:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Endpoint</th>
+                        <th>Source</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>validator</td>
+                        <td>tcp://localhost:4004</td>
+                        <td>DockerHub</td>
+                        <td>Validates blocks and transactions</td>
+                    </tr>
+                    <tr>
+                        <td>rest-api</td>
+                        <td>
+                            <a href="http://localhost:8008" rel="nofollow">http://localhost:8008</a>
+                        </td>
+                        <td>DockerHub</td>
+                        <td>Provides blockchain via HTTP/JSON</td>
+                    </tr>
+                    <tr>
+                        <td>processor</td>
+                        <td>--</td>
+                        <td>custom</td>
+                        <td>The core smart contract logic for your app</td>
+                    </tr>
+                    <tr>
+                        <td>client</td>
+                        <td>
+                            <a href="http://localhost:3000" rel="nofollow">http://localhost:3000</a>
+                        </td>
+                        <td>custom</td>
+                        <td>Your front end, served from
+                            <code>client/public/</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>shell</td>
+                        <td>--</td>
+                        <td>DockerHub</td>
+                        <td>Environment for running Sawtooth commands</td>
+                    </tr>
+                    <tr>
+                        <td>settings-tp</td>
+                        <td>--</td>
+                        <td>DockerHub</td>
+                        <td>Built-in Sawtooth transaction processor</td>
+                    </tr>
+                </tbody>
+            </table>
+            </section>
+            <section id="startstop-commands">
+            <h3>
+                <a id="user-content-startstop-commands" class="anchor" aria-hidden="true" href="#startstop-commands">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Start/Stop Commands</h3>
+            <p>First, you will use the
+                <code>docker-compose up</code> command to start all components. Note that this might take as long as 30 minutes the first time you run it (later
+                runs will be much faster; more like 30 seconds). If you are in the same directory as the
+                <code>docker-compose.yaml</code> file, the
+                <code>up</code> command will find the file by default, so you won't need to provide any other parameters:</p>
+            <div class="highlight highlight-source-shell">
+                <pre><span class="pl-c1">cd</span> code/part-two/
+    docker-compose up</pre>
+            </div>
+            <p>This builds and starts
+                <em>everything</em> defined in your compose file. Once all the components are running, you can then stop it all with
+                the keyboard shortcut
+                <code>ctrl-C</code>. If you want to stop
+                <em>and</em> destroy every container (they will be rebuilt on your next
+                <code>up</code>), use this command:</p>
+            <div class="highlight highlight-source-shell">
+                <pre>docker-compose down -v</pre>
+            </div>
+            <p>That is really all you need. These commands are the start/stop buttons for your app. You can develop just fine by
+                starting things up, making some changes, tearing everything down, and then starting it all up again. However,
+                if you want fine-grained control, you can leave everything else running but stop, start, or restart individual
+                components using their container name listed in the table above. For example, with your transaction processor,
+                you could open a new terminal window and run one of these commands:</p>
+            <div class="highlight highlight-source-shell">
+                <pre>docker stop processor
+    docker start processor
+    docker restart processor</pre>
+            </div>
+            </section>
+            <section id="entering-a-container">
+            <h3>
+                <a id="user-content-entering-a-container" class="anchor" aria-hidden="true" href="#entering-a-container">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Entering a Container</h3>
+            <p>There is nothing in the curriculum that would require you to do this, but if you are curious, it is possible to
+                <em>enter</em> a running container if you want to run commands from that container. This is particularly useful with
+                the "shell" container when you want to run
+                <a href="https://sawtooth.hyperledger.org/docs/core/releases/1.0/cli/sawtooth.html" rel="nofollow">Sawtooth CLI</a>
+                commands. You would do this with
+                <code>exec</code>, which allows you run any command from within a container, specifying
+                <code>bash</code> as the command you want to run:</p>
+            <div class="highlight highlight-source-shell">
+                <pre>docker <span class="pl-c1">exec</span> -it shell bash</pre>
+            </div>
+            <p>An important note! When you are within a container, you cannot use "localhost" for networking. Remember how each
+                container is like its own little computer? Well, it comes complete with its own localhost. For networking to
+                <em>other</em>
+                containers, Docker provides the service names from the compose file as URLs. For example, if you were inside the shell container
+                and wanted to fetch the blocks from the REST API, you would run:</p>
+            <div class="highlight highlight-source-shell">
+                <pre>curl http://rest-api:8008/blocks</pre>
+            </div>
+            <p>Finally, if you need to exit a container, simply use:</p>
+            <div class="highlight highlight-source-shell">
+                <pre><span class="pl-c1">exit</span></pre>
+            </div>
+            </section>
+            </section>
+            <section id="the-curriculum">
+            <h2>
+                <a id="user-content-the-curriculum" class="anchor" aria-hidden="true" href="#the-curriculum">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>The Curriculum</h2>
+                
+              
+        <section id="sawtooth-documentation">
+            <h3>
+                <a id="user-content-sawtooth-documentation" class="anchor" aria-hidden="true" href="#sawtooth-documentation">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a>Sawtooth Documentation</h3>
+            <p>Sawtooth has in-depth documentation covering many aspects of the platform. It can be a little overwhelming at first!
+                For the new distributed app developer working with Javascript, start with these documents:</p>
+            <ul>
+                <li>
+                    <a href="https://sawtooth.hyperledger.org/docs/core/releases/1.0/introduction.html" rel="nofollow">Sawtooth Introduction</a>
+                </li>
+                <li>Architecture
+                    <ul>
+                        <li>
+                            <a href="https://sawtooth.hyperledger.org/docs/core/releases/1.0/architecture/global_state.html" rel="nofollow">Global State</a>
+                        </li>
+                        <li>
+                            <a href="https://sawtooth.hyperledger.org/docs/core/releases/1.0/architecture/transactions_and_batches.html"
+                                rel="nofollow">Transactions and Batches</a>
+                        </li>
+                        <li>
+                            <a href="https://sawtooth.hyperledger.org/docs/core/releases/1.0/architecture/rest_api.html" rel="nofollow">REST API</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>The Javascript SDK
+                    <ul>
+                        <li>
+                            <a href="https://sawtooth.hyperledger.org/docs/core/releases/1.0/_autogen/sdk_submit_tutorial_js.html"
+                                rel="nofollow">Building and Submitting Transactions</a>
+                        </li>
+                        <li>
+                            <a href="https://sawtooth.hyperledger.org/docs/core/releases/1.0/_autogen/sdk_TP_tutorial_js.html" rel="nofollow">Transaction Processor Tutorial</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section id="app-development-lecture">
+            <h3>
+                <a id="user-content-app-development-lecture" class="anchor" aria-hidden="true" href="#app-development-lecture">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                    </svg>
+                </a><h2>App Development Lecture</h2>
+            <p>In addition to reviewing the official Sawtooth documentation, watch the Cryptomoji video lecture, which covers all
+                the basics of Sawtooth application development in detail. It is broken into five parts, the first of which is
+                a overview of blockchains generally, which you may have already watched in part one.</p>
+            
+                
+                    <h3>  <b>Sawtooth Overview</b></h3>
+                    <hr>
+
+                   <iframe width="853" height="480" src="https://www.youtube.com/embed/fRO0DlnKbjQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+                   
+                
+                <h3> <b> Writing Transaction Processors </b></h3>
+                	<hr>
+                    <iframe width="853" height="480" src="https://www.youtube.com/embed/u67a1k-K8ps" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+                <h3> <b> Writing Clients</b></h3>
+                <hr>
+                <iframe width="853" height="480" src="https://www.youtube.com/embed/Rc3_-PUPlqE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+                
+                <h3> <b>Sprint Design</b> </h3>
+                <hr>
+                <iframe width="853" height="480" src="https://www.youtube.com/embed/qdwcD0zQJ_U" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+               
+            <br>
+            <br>
+            <p>The slides are also available:</p>
+            <br>
+            <ul>
+                <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRJEe_O0Rt0uLhdAK9Vn9xp4_D9JRgX9vj5-BM0zJUgrKLx5ydbkLTSuWldtp-Tz_40sQ98iDxv2xbM/embed?start=false&loop=false&delayms=3000" frameborder="0" width="853" height="480" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+                
+            </ul>
+            </section>
+        </section>
+        <br>
+            <p style="font-size:18px"><i><b>Good luck!</b></i></p>
+        </article>
+    </div>
+</body>
+</html>
