@@ -67,18 +67,17 @@
                       <li><h3 id="ethereum-lecture"><strong>Ethereum Lecture</strong></h3></li>
                       <iframe src="https://docs.google.com/presentation/d/1ZnGcHKb0RvoaGhdbgNYN3mAIOHtJHvUTQl3uYJBODkM/embed?start=false&loop=false&delayms=3000" frameborder="0" width="853" height="480" allowfullscreen="true" mozallowfullscreen="true"
                   webkitallowfullscreen="true"></iframe>
-                  <br>
                       <li><h3 id="solidity-lecture"><strong>Solidity Lecture</strong></h3></li>
 
                       <iframe src="https://docs.google.com/presentation/d/17c4c8XqcxLrX9DbBS8MZyQqytH4-_h9PTLHkP-sfb10/embed?start=false&loop=false&delayms=3000" frameborder="0" width="853" height="480" allowfullscreen="true" mozallowfullscreen="true"
-                  webkitallowfullscreen="true"></iframe><br> <br>
+                  webkitallowfullscreen="true"></iframe>
                     	<li>
                     		
                     	<h3 id="useful-links"><strong>Useful Links</strong></h3>
                     	<ol>
-                    		<li><a href="https://solidity.readthedocs.io/en/v0.4.24/">Solidity Documentation</a></li>
-                    		<li><a href="https://www.bitdegree.org/learn/solidity-error-handling/">Error Handling in Solidity</a></li>
-                    		<li><a href="https://www.bitdegree.org/learn/solidity-reference-types/">Reference Types</a></li>
+                    		<li><a href="https://solidity.readthedocs.io/en/v0.4.24/"></a>Solidity Documentation</li>
+                    		<li><a href="https://www.bitdegree.org/learn/solidity-error-handling/"></a>Error Handling in Solidity</li>
+                    		<li><a href="https://www.bitdegree.org/learn/solidity-reference-types/"></a>Reference Types</li>
                     	</ol>
                     	</li>
 
@@ -88,31 +87,26 @@
 
       <h1 id="metamask"><strong>MetaMask:</strong></h1>
 
-<hr>
+
       <p> 
 - At the begining you have to download metamask from Chrome Web Store.<br>
 1- in your Chrome browser navigate to <a href="https://chrome.google.com/webstore/category/extensions"> Chrome web store</a><br>
 2- search for metamask.<br>
 3- click ADD TO CHROME.<br>
-4- you will have its icon in your browser.<br>
-5- click on the icon, and complete the steps untill you have the "create" window.<br>
+4- you will have its icon in the top right of your browser.<br>
+5- click on the icon, and complete the steps untill you have the "create an account" window.<br>
 6- enter your password and save your secret words.<br>
 <br>
 
 - After that you will have your account (Account1) created, you can see that you don't have any ethers until now.<br>
 - From the drop list on the top you can see the Ethereum networks :<br>
-  <ul>
-
-  <li>a- The main network.<br></li>
-  <li>b- The test networks :<br></li>
-    <ul>
-  <li>  1- Ropsten.<br></li>
-   <li> 2- Kovan.<br></li>
-   <li> 3- Rinkeby.<br></li>
- </ul>
- <li> c- Local host 8545 : when we are hosting a local Ethereum node or local Ethereum test network.<br></li>
-  <li>d- Custom RPC : when we are using some remote network at some address.<br></li>
-</ul>
+  a- The main network.<br>
+  b- The test networks :<br>
+    1- Ropsten.<br>
+    2- Kovan.<br>
+    3- Rinkeby.<br>
+  c- Local host 8545 : when we are hosting a local Ethereum node or local Ethereum test network.<br>
+  d- Custom RPC : when we are using some remote network at some address.<br>
 <br>
 - Now you have to get some ethers :<br>
 1- for that we will use Rinkeby test network, select it from the drop list in the top.<br>
@@ -128,20 +122,13 @@ Notice that if you changed the network, your balance will not be the same. <br>
 2- now you have two accounts (Account1 and Account2), you can switch between them by selecting the account name from the same icon. <br>
 3- from Account1, click on send and put the recipient address (Account2) and yhe ammount you want to transfer, then click next then submit.<br>
 <br>
-Notice that the balances will not change immediately, you will be notified when it is completed, after that you can check the balance for the both accounts.<br>
-<br>
-- Etherscan : <br>
-it is the leading BlockExplorer for the Ethereum Blockchain. A BlockExplorer is basically a search engine that allows users to easily lookup, confirm and validate transactions that have taken place on the Ethereum Blockchain. <br>
-you can check it <a href="https://etherscan.io">HERE</a>
-
-</p>
+Notice that the balances will not change immediately, you will be notified when it is completed, after that you can check the balance for the both accounts.</p>
 
 			<h1 id="exercises"><strong>Exercises:</strong></h1>
 
 			<hr>
 
-			<p>You have here five exercises on solidity language, one of which is an extra credit.</p> <br>
-      <p> In the repo you will fork, you will find all the exercises. Copy them and try your solution in <a href="https://remix.ethereum.org/"> Remix </a> </p> <br>
+			<p>You have here five exercises on solidity language, one of which is an extra credit.</p>
 			<h3 id="01practice" style='font-weight: bold'>I.	Warm Up exercise</h3>
 			<p></p>
 			<pre class="code"><code>
@@ -160,7 +147,10 @@ contract exercise {
        balance=2*balance;
        return balance;
    }
-   
+   function tripleBalance() constant public returns (uint) {
+       balance=3*balance;
+       return balance;
+   }
 }
 </code></pre>
 <p>1- Fix the errors.
@@ -171,7 +161,8 @@ contract exercise {
 4-Do you really need getBalance method or you can get it in another way? Why cant you get name the same way you get balance? <br>
 5-Try getting num array without writing a getter for it. Did it work? <br>
 6- Double your balance and check it again, is it doubled? Search for the reason. <br>
-7-Write a method that uses another method in the contract and make sure of your result.</p>
+7- Triple your balance, what is the returned value and why? Search for the reason. <br>
+8-Write a method that uses another method in the contract and make sure of your result.</p>
 			<h3 id="02blockchainDB" style='font-weight: bold'>II.	BlockChain Camp Database:</h3>
 
 			
@@ -204,9 +195,9 @@ Your job is to build the following functions:
 
 <p>
 	1. <b>Constructor</b> that stores the address of the beneficiary and the password of the asset to be bought, and sets the auction duration to 3 hours from the time of deployment. <br>
-2. <b>bid</b> that will receive an amount of money from this function caller address and if it’s less the the previous bid it will return it to the sender, if it’s more it will keep it and return the previous stored amount to its sender. <br>
+2. <b>bid</b> that will receive an amount of money from this function caller address and if it’s less the the previous bid it will return it to the sender, if it’s more it will keep it and return the previous stored amount to its sender.
 3. <b>showMax</b> which will return the maximum bid so far, and the address of the highest bidder. Note: we can get rid of this function using the events that you’ll learn about in the next sprint. <br>
-4. <b>sellAsset</b>, this function will give an access to the highest bidder to the password of the asset (resemblance of selling the asset) and send the money to the beneficiary. <br>
+4. <b>buyAsset</b>, this function will give an access to the highest bidder to the password of the asset (resemblance of buying the asset) and send the money to the beneficiary. <br>
 5. <b>getAsset</b>, this function will return the password to highest bidder.(Note: We need this function since the password can not be sent to the winner like ethers/tokens. </p>
 
 

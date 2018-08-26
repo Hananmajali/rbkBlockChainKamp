@@ -64,20 +64,24 @@
                     	<h2 id="getting-started"><strong>Getting Started and Project Set Up</strong></h2>
                     <hr>
 <h3 id="npm">npm</h3>
-<p>This sprint uses <a href="https://www.npmjs.com/">npm</a> to manage its dependencies. npm comes bundled with Node, and is another JavaScript package manager that makes it easy for developers to share and reuse code. Even though npm started in the Node ecosystem, it is quickly becoming the default choice for sharing all types of JavaScript code.
-Install Node.js if you haven't yet.
+<p>This sprint uses <a href="https://www.npmjs.com/">npm</a> to manage its dependencies. npm comes bundled with Node, and is another JavaScript package manager that makes it easy for developers to share and reuse code. Even though npm started in the Node ecosystem, it is quickly becoming the default choice for sharing all types of JavaScript code. <br> what you need to do here is:
+<ol><li>Install Node.js if you haven't yet.</li>
+    <li>Run
+<code class="code">npm install</code></li>
+</ol> 
+
 </p>
-<code class="code">Run npm install. </code>
 
 
+<br>
 <h3 id="Solc">Solc</h3>
-<p>JavaScript bindings for the Solidity compiler. </p>
-<code class="code">Run npm install solc  —save. </code>
-
+<p>JavaScript bindings for the Solidity compiler, the compiler can produce a range of choices, from simple binaries To use the latest stable version of the Solidity compiler via Node.js you can install it via npm: </p>
+Run <code class="code">npm install solc  —save</code>
+<br>
 <h3 id="npm-scripts">npm scripts</h3>
-<p>npm comes with a handy scripting feature that lets you define shell commands inside of package.json. </p>
+<p>npm comes with a handy scripting feature that lets you define shell commands inside of package.json, here in this project we set two scripts that you are going to use a lot. you can also define your own scripts if you feel the need to do so. </p>
 
-      
+      <br><br>
 
 
                     	<h2 id="curriculum"><strong>The Curriculum</strong></h2>
@@ -94,7 +98,7 @@ Install Node.js if you haven't yet.
                     <hr>
                     <ul><li><a href="https://theethereum.wiki/w/index.php/ERC20_Token_Standard">ERC20 Token Standard</a></li>
                     	<li><a href="https://web3js.readthedocs.io/en/1.0/">Web3 Documentation</a></li>
-                    	<li><a href="https://web3j.readthedocs.io/en/latest/infura.html"></a>Using Infura with web3j</li>
+                    	<li><a href="https://web3j.readthedocs.io/en/latest/infura.html">Using Infura with web3j</a></li>
                     	
                     </ul>
 
@@ -104,39 +108,52 @@ Install Node.js if you haven't yet.
 
 
 
-			<h1 id="theproject"><strong>The Project</strong></h1>
+<h1 id="theproject"><strong>The Project</strong></h1>
+<hr>
+<h2>Part One: EthToken</h2>
 
-			<hr>
-<ul class="task-list">
-<li class="task-list-item"><p> Inside of your repo:</p>
-
-<p id="create-a-dynamic-video-list-component">First, get familiar with the EIP20Interface.sol file and try to understand its functions with their parameters. </p>
-<p>* Don’t add/delete comments in this file or you will get errors because they are considered part of the code</p>
-<p id="create-a-dynamic-video-list-component">Run npm run test. </p>
-<p id="create-a-dynamic-video-list-component">To pass the tests:  </p>
-
-<ul class="task-list">
-<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Start implementing the EIP20Interface.sol  functions in HiddenFig.sol file</li>
-
-<p id="create-a-dynamic-video-list-component">* Hint: The commented line in compile.js file will help you to fix your contract errors. </p>
-
-<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Implement getTokens(), getEthers() functions which will let the sender buy and sell his tokens.   </li>
-
-</ul>
-</ul>
+contracts/BCCoin.sol is the smart contract the when compiled and deployed; will represent your currency, to build this contract you need to achieve the following:
+<ul>
 
 
+<li >First, get familiar with the contracts/Interface.sol file and try to understand its functions with their parameters and answer the following question,
+what does this interface represent? and why do we use it? 
+</li>
+<p>* Don’t add/delete comments in this file or you will get errors because they are considered part of the code</p> 
+
+<li >Run <code class= code>npm run test. </code></li>
+<p >To pass the tests:  </p>
+
+<ul >
+<li><input type="checkbox" class="task-list-item-checkbox"> Start by implementing the functions declared in contracts/Interface.sol, inside contracts/BCCoin.sol file</li>
+
+<p>* Hint: The commented line in compile.js file will help you to fix your contract errors. </p>
+
+<li><input type="checkbox" class="task-list-item-checkbox"> Implement getTokens(), getEthers() functions which will let the sender buy and sell his tokens.   </li></ul>
+<ul></ul>
+
+<p>By completing the above, you've written the smart contract of your token, now it's the time to compile the code and deploy it.</p> <br>
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox">inside of complie.js, you'll find the the compilation code written for you, read it carefully and understarnd it. </li>
+
+<li><input type="checkbox" class="task-list-item-checkbox"> in the file Deploy.js you need to write the code that would deploy your compiled contract, in this project we are going to use the Rinkeby test network to depoly the contracts to it, and the hosted Ethereum node cluster, infura to achieve that.</li></ul><br><br>
+<h2>Part Two: Front-End</h2>
+<p>In order to interact with your contract, we built a simple front-end for you, your job is:
+    <ul><li><input type="checkbox" class="task-list-item-checkbox"> to complete src/token.js</li>s
+        <li> <input type="checkbox" class="task-list-item-checkbox"> inside src/app.js,to fill the functions to make them work properly</li></ul>
+  </p>
 
 
 
+<br><br>
+	<h1 id="extracredit"><strong>Extra Credit</strong></h1><hr>
+            <ul>
 
-			<h1 id="extracredit">Extra Credit</h1>
+                <li>   Think about a function you can add to let the owner generates new tokens if his balance is out of tokens</li>
+                <li>   Inside of Metamask on your browser, go to add token and try to add your token, does it work properly? what do you think is the reason of that? make the necessary changes in your contracts folder to make work on metamask.</li>
+            </ul>
+			
 
-			<hr>
-
-
-
-			<p>Deploy your contract on Rinkeby network using infura.</p>
 
 		</div></div>
 
