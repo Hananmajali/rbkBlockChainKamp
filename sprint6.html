@@ -1,0 +1,192 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <title>Sprint 6: Green Chain Project
+    </title>
+</head>
+<link rel="icon" href="Sawtooth.png" type="image/x-icon" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="style.css" />
+<style>
+    h2,
+    h1 {
+        font-weight: bold;
+        text-transform: capitalize;
+        color: black;
+    }
+
+    code {
+        background: #335;
+        padding: 5px;
+    }
+
+    a {
+        color: #666;
+    }
+</style>
+
+<body class='container'>
+    <div class="main-content">
+        <div>
+            <div class="page">
+                <h1>
+                    <strong>Sprint 6: GreenChain</strong>
+                </h1>
+                <hr>
+                <br>
+                <li>In this sprint you will build your full DAPP And Implement Your Idea</li>
+                <li>You can build your own standard or you can use ERC721 or ERC20</li>
+                <li>You are free to choose your front end language  to get better idea open<a href="https://truffleframework.com/boxes" > truffle Boxes</a> </li>
+
+                <br>
+                <br>
+
+                <h1 id="theproject">
+                    <strong>The Project</strong>
+                </h1>
+                <hr>
+                <ul>
+                    <li>
+                        start a new project using truffle you can Check the official documentation to get started
+                        <a href="https://truffleframework.com/docs">truffle documentation</a>
+                    </li>
+                    <li>
+                        think about a good idea that solves a real problem and make use of ethereum to make the smart
+                        contract
+                        , you can use remix IDE to write the smart contracts.
+                    </li>
+                    <li>
+                        use ganache to deploy your contracts
+                    </li>
+                    <li>
+                        build a simple front end to make use of your contract
+                        you are free to use what ever technologies you like.
+                    </li>
+                </ul>
+
+                <ul>
+                    <li>
+                        don't forget to push your code to github.
+                    </li>
+                    <li>
+                        deploy your contracts to Reposten or any other test network
+                    </li>
+                    <li>
+                        deploy your DAPP to any host service to have your DAPP online.
+                    </li>
+                </ul>
+            </div>
+
+            <h1 id="useful-links">
+                <strong>Useful Links</strong>
+            </h1>
+            <hr>
+            <ul>
+                <li>
+                    <a href="https://truffleframework.com/docs">truffle and ganache documentation</a>
+                </li>
+                <li>
+                    <a href="https://truffleframework.com/docs/ganache/overview">ganache</a>
+                </li>
+                <li>
+                    <a href="https://github.com/ethereum/web3.js/">web3 readme</a>
+                </li>
+                <li>
+                    <a href="https://web3j.readthedocs.io/en/latest/infura.html">Using Infura with web3</a>
+                </li>
+            </ul>
+
+
+        </div>
+
+
+        <br>
+        <br>
+
+        <button class="scrollToTop btn btn-primary">
+            <i class="fas fa-angle-double-up"></i>
+        </button>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+
+                $(function () {
+
+                    $('a[href*="#"]:not([href="#"])').click(function () {
+
+                        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//,
+                                '') &&
+                            location.hostname == this.hostname) {
+
+                            var target = $(this.hash);
+
+                            target = target.length ? target : $('[name=' + this.hash.slice(1) +
+                                ']');
+
+                            if (target.length) {
+
+                                $('html, body').animate({
+
+                                    scrollTop: target.offset().top
+
+                                }, 900);
+
+                                return false;
+
+                            }
+
+                        }
+
+                    });
+
+                });
+
+                //Check to see if the window is top if not then display button
+
+                $(window).scroll(function () {
+
+                    if ($(this).scrollTop() > 100) {
+
+                        $('.scrollToTop').fadeIn();
+
+                    } else {
+
+                        $('.scrollToTop').fadeOut();
+
+                    }
+
+                });
+
+                //Click event to scroll to top
+
+                $('.scrollToTop').click(function () {
+
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 800);
+
+                    return false;
+
+                });
+
+            });
+        </script>
+
+    </div>
+
+</body>
+
+</html>
