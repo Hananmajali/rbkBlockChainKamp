@@ -1,301 +1,316 @@
 <!DOCTYPE>
 <html>
-	<head>
-		<title>
-			ERC-20
-		</title>
-	</head>
-<link rel="icon" href="Sawtooth.png" type="image/x-icon"/>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<head>
+	<title>Sprint Four: Build your own non-fungible Token
+	</title>
+</head>
+<link rel="icon" href="Sawtooth.png" type="image/x-icon" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="style.css"/>
-	<body class='container'>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="style.css" />
+<style>
+	h2,
+	h1 {
+		font-weight: bold;
+		text-transform: capitalize;
+		color: black;
+	}
 
+	code {
+		background: #335;
+		padding: 5px;
+	}
 
-			<div class="main-content"><div><div class="page">
-				<u><strong><h1>High level Goals:</h1></strong></u>
-				<li>Learn about ERC721</li>
-				<li>Testing Solidity Files using remix</li>
-				<li>Get familiar with the functions used in ERC20</li>
+	a {
+		color: #666;
+	}
+</style>
 
+<body class='container'>
+	<div class="main-content">
+		<div>
+			<div class="page">
+				<h1 id="chatterbox-server">
+					<strong>Sprint Four: Build your own non-fungible Token</strong>
+				</h1>
+				<hr>
+				<br>
 				<br>
 
-				<h1 id="chatterbox-server">ERC-721 Tokens</h1>
-				<br>
-			<p>Many have heard of the new game on the Ethereum blockchain called CryptoKitties. The new game recently made several headlines within the cryptocurrency community because of its extremely unique idea and the dent it’s made on the Ethereum network. CryptoKitties is a game in which players can buy, sell, trade, and breed digital cats. They can be thought of as “breedable Beanie Babies” in that each cat is unique in some way. This uniqueness makes the CryptoKitties extremely collectible, as someone could take interest in the characteristics of several kittens and wish to own many of them.</p>
-			<br>
-			<p>But collectibles aren’t limited to digital felines. Humans have always had a history of collecting things; it’s nothing new. From physical coins to Pokémon cards, people love collecting. It’s a hobby that forms as a result of a unique interest in scarce items. Similar to how the value of a commodity is related to its scarcity, the value of a collectible item to a collector is connected to its rareness among other items.</p>
-			<br>
-			<p>We can emulate rare, collectible items with Ethereum tokens, and each of these tokens follows a novel standard in the Ethereum community known as ERC721. Ethereum Request for Comments 721, or ERC721, is an Ethereum Improvement Proposal introduced by Dieter Shirley in late 2017. It’s a proposed* standard that would allow smart contracts to operate as tradeable tokens similar to ERC20. ERC721 tokens are unique in that the tokens are non-fungible.</p>
-			<br>
-			<p><strong>Fungible</strong> — being something (such as money or a commodity) of such a nature that one part or quantity may be replaced by another equal part or quantity in paying a debt or settling an account. Source: Merriam-Webster
-
-</p>
-			<br>
-			<p>Fungibility is, essentially, a characteristic of an asset, or token in this case, that determines whether items or quantities of the same or similar type can be completely interchangeable during exchange or utility. For example, the US Five Dollar bill below can be used to purchase a soda from a convenience store.</p>
-			<br>
-			<p>It has value and can be used to purchase items with the same or less value. However, when one goes to purchase a soda with the following baseball card, the store owner won’t accept it.
-
-</p>
-			<br>
-			<p>Why wouldn’t the above Carlos Santana card be accepted by the store owner when it’s worth $5, same as the above bill? This is because the baseball card and the dollar bill have differing characteristics that define their value to certain people. A 7 year old child could be willing to pay $7 for the baseball card, because they like the colors on the card. But, the store owner doesn’t even value the card at $5 simply because it wasn’t issued by the Federal Reserve like the dollar is. The unique attributes that the baseball card and dollar bill have are what take away their fungibility, as they are valued differently depending on the exchange and cannot always be used interchangeably.</p>
-			<br>
-			<p>In terms of collectible items, two items in a collection are not fungible if they have different characteristics. For physical coins, a gold coin is not fungible with a copper coin, because their differing characteristics give them different values to collectors.</p>
-			<br>
-			<p>ERC721 tokens can be used in any exchange, but their value is a result of the uniqueness and rareness associated with each token. The standard defines the functions name , symbol , totalSupply , balanceOf , ownerOf , approve , takeOwnership , transfer , tokenOfOwnerByIndex , and tokenMetadata . It also defines two events: Transfer and Approval .</p>
-			<br>
-			<p>Note: This is a concise declaration of an example ERC721 contract</p>
-			<br>
-			<pre style="background-color:white">contract ERC721 {
-   // ERC20 compatible functions
-   function name() constant returns (string name);
-   function symbol() constant returns (string symbol);
-   function totalSupply() constant returns (uint256 totalSupply);
-   function balanceOf(address _owner) constant returns (uint balance);
-   // Functions that define ownership
-   function ownerOf(uint256 _tokenId) constant returns (address owner);
-   function approve(address _to, uint256 _tokenId);
-   function takeOwnership(uint256 _tokenId);
-   function transfer(address _to, uint256 _tokenId);
-   function tokenOfOwnerByIndex(address _owner, uint256 _index) constant returns (uint tokenId);
-   // Token metadata
-   function tokenMetadata(uint256 _tokenId) constant returns (string infoUrl);
-   // Events
-   event Transfer(address indexed _from, address indexed _to, uint256 _tokenId);
-   event Approval(address indexed _owner, address indexed _approved, uint256 _tokenId);
-}</pre>
-			<br>
-			<p>An overview of each field within the contract is as follows.</p>
-			<br>
-			<p>KEEP IN MIND: The following code is solely for educational purposes and is not tested. Please do not implement it in production applications!</p>
-			<br>
-
-			<p><strong>ERC20-like Functions</strong>
-ERC721 defines a few functions that give it some compliance with the ERC20 token standard. It does this to make it easier for existing wallets to display simple information about the token. These functions let the smart contract that fits this standard act like a common cryptocurrency such as Bitcoin or Ethereum by defining functions that let users perform actions such as sending tokens to others and checking balances of accounts.</p>
-			<br>
-			<p><strong>name</strong>
-This function is used to tell outside contracts and applications the name of this token. An example implementation of the function can be as follows.</p>
-			<br>
-			<pre style="background-color:white">contract MyNFT {
-  function name() constant returns (string name){
-    return "My Non-Fungible Token";
-  }
-}</pre>
-			<br>
-			<p><strong>symbol</strong>
-
-This function also helps in providing compatibility with the ERC20 token standard. It provides outside programs with the token’s shorthand name, or symbol.</p>
-			<br>
-			<pre style="background-color:white">contract MyNFT {
-  function symbol() constant returns (string symbol){
-    return "MNFT";
-  }
-}</pre>
-			<br>
-			<p><strong>totalSupply</strong>
-This function returns the total number of coins available on the blockchain. The supply does not have to be constant.</p>
-			<br>
-			<pre style="background-color:white">contract MyNFT {
-  // This can be an arbitrary number
-  uint256 private totalSupply = 1000000000;
-  function totalSupply() constant returns (uint256 supply){
-    return totalSupply;
-  }
-}</pre>
-			<br>
-			<p><strong>balanceOf</strong>
-This function is used to find the number of tokens that a given address owns.</p>
-			<br>
-			<pre style="background-color:white">contract MyNFT {
-  mapping(address => uint) private balances;
-  function balanceOf(address _owner) constant returns (uint balance)
-  {
-    return balances[_owner];
-  }
-}</pre>
-			<br>
-			<p><strong>Ownership Functions</strong>
-These functions define how the contract will handle token ownership and how ownership can be transferred. The most notable of these functions aretakeOwnership and transfer , which act like withdraw and send functions, respectively, and are essential for letting users transfer tokens between each other.</p>
-			<br>
-
-			<p><strong>ownerOf</strong>
-This function returns the address of the owner of a token. Because each ERC721 token is non-fungible and, therefore, unique, it’s referenced on the blockchain via a unique ID. We can determine the owner of a token using its ID.</p>
-			<br>
-			<pre style="background-color:white">
-contract MyNFT {
-  mapping(uint256 => address) private tokenOwners;
-  mapping(uint256 => bool) private tokenExists;
-  function ownerOf(uint256 _tokenId)
-  constant returns (address owner) {
-    require(tokenExists[_tokenId]);
-    return tokenOwners[_tokenId];
-  }
-}</pre>
-			<br>
-			<p><strong>approve</strong>
-This function approves, or grants, another entity permission to transfer a token on the owner’s behalf. For example, if Alice owns 1 MyNFT she can call the approve function for her friend Bob. After a successful call, Bob could take ownership of or perform operations on the token at a later time on Alice’s behalf. More information on transferring ownership can be seen in the takeOwnership and transfer functions.</p>
-			<br>
-			<pre style="background-color:white">contract MyNFT {
-  mapping(address => mapping (address => uint256)) allowed;
-  function approve(address _to, uint256 _tokenId){
-    require(msg.sender == ownerOf(_tokenId));
-    require(msg.sender != _to);
-    allowed[msg.sender][_to] = _tokenId;
-    Approval(msg.sender, _to, _tokenId);
-  }
-}</pre>
-			<br>
-			<p><strong>takeOwnership</strong>
-This function acts like a withdraw function, since an outside party can call it in order to take tokens out of another user’s account. Therefore, takeOwnership can be used to when a user has been approved to own a certain amount of tokens and wishes to withdraw said tokens from another user’s balance.</p>
-			<br>
-			<pre style="background-color:white">contract MyNFT {
-  function takeOwnership(uint256 _tokenId){
-    require(tokenExists[_tokenId]);
-    address oldOwner = ownerOf(_tokenId);
-    address newOwner = msg.sender;
-    require(newOwner != oldOwner);
-    require(allowed[oldOwner][newOwner] == _tokenId);
-    balances[oldOwner] -= 1;
-    tokenOwners[_tokenId] = newOwner;
-    balances[newOwner] += 1;
-    Transfer(oldOwner, newOwner, _tokenId);
-  }
-}</pre>
-			<br>
-			<p><strong>transfer</strong>
-The next method of transferring tokens is using this function. transfer lets the owner of a token send it to another user, similar to a standalone cryptocurrency. However, a transfer can only be initiated if the receiving account has previously been approved to own the token by the sending account.</p>
-			<br>
-			<pre style="background-color:white">contract MyNFT {
-  mapping(address => mapping(uint256 => uint256)) private ownerTokens;
-  function removeFromTokenList(address owner, uint256 _tokenId) private {
-    for(uint256 i = 0;ownerTokens[owner][i] != _tokenId;i++){
-      ownerTokens[owner][i] = 0;
-    }
-  }
-  function transfer(address _to, uint256 _tokenId){
-    address currentOwner = msg.sender;
-    address newOwner = _to;
-    require(tokenExists[_tokenId]);
-    require(currentOwner == ownerOf(_tokenId));
-    require(currentOwner != newOwner);
-    require(newOwner != address(0));
-    removeFromTokenList(_tokenId);
-    balances[oldOwner] -= 1;
-    tokenOwners[_tokenId] = newOwner;
-    balances[newOwner] += 1;
-    Transfer(oldOwner, newOwner, _tokenId);
-  }
-}</pre>
-			<br>
-			<p><strong>tokenOfOwnerByIndex (Optional — Recommended)</strong>
-Each non-fungible token owner can own more than one token at one time. Because each token is referenced by its unique ID, however, it can get difficult to keep track of the individual tokens that a user may own. To do this, the contract keeps a record of the IDs of each token that each user owns. Because of this, each individual token owned by a user can be retrieved by its index in the list (array) of tokens owned by the user. tokenOfOwnerByIndex lets us retrieve a token in this method</p>
-			<br>
-			<pre style="background-color:white">contract MyNFT {
-  mapping(address => mapping(uint256 => uint256)) private ownerTokens;
-  function tokenOfOwnerByIndex(address _owner, uint256 _index) constant returns (uint tokenId){
-    return ownerTokens[_owner][_index];
-  }
-}</pre>
-			<br>
-			<p><strong>Metadata Function</strong>
-Like we’ve said before, what makes non-fungible items non-fungible is their unique set of attributes. A dollar and a baseball card are not fungible, because they have different characteristics. But, storing data on the blockchain that tell the defining characteristics of each token is extremely expensive and not recommended. To combat this, we can store references, like an IPFS hash or HTTP(S) link, to each token’s attributes on the chain so that a program outside of the chain can execute logic to find more information about the token. These references are data about data, or metadata.</p>
-			<br>
-			<p><strong>tokenMetadata (Optional — Recommended)</strong>
-This function lets us discover a token’s metadata, or the link to the its data.</p>
-			<br>
-			<pre style="background-color:white">contract MyNFT {
-  mapping(uint256 => string) tokenLinks;
-  function tokenMetadata(uint256 _tokenId) constant returns (string infoUrl) {
-    return tokenLinks[_tokenId];
-  }
-}</pre>
-			<br>
-			<p><strong>Events</strong>
-Events are fired whenever a contract calls them, and they’re broadcasted to any listening programs once they’ve been fired. Outside programs listen to blockchain events so that they can execute logic once the event is fired using the information that the event provides. The ERC721 standard defines two events that are as follow.</p>
-			<br>
-			<p><strong>Transfer</strong>
-This event is fired whenever a token changes hands. It’s broadcasted when a token’s ownership moves from one user to another. It details which account sent the token, which account received the token, and which token (by ID) was transferred.</p>
-			<br>
-			<pre style="background-color:white">contract MyNFT {
-  event Transfer(address indexed _from, address indexed _to, uint256 _tokenId);
-}</pre>
-			<br>
-			<p>
-<strong>Approval</strong>
-This event is fired whenever a user approves another user to take ownership of a token (i.e. whenever approve is executed). It details which account currently owns the token, which account is allowed to own the token in the future, and which token (by ID) is approved to have its ownership transferred.</p>
-			<br>
-			<pre style="background-color:white">contract MyNFT {
-  event Approval(address indexed _owner, address indexed _approved, uint256 _tokenId);
-}</pre>
-			<br>
-			<p>The source code of my implementation of the ERC721 standard can be found here.</p>
-			<br>
-			<p>Similar to ERC20, the newly proposed ERC721 standard has opened up a gateway for new smart contracts to act as non-fungible items. As can be seen in applications like CryptoKitties, Decentraland, CryptoPunks, and many others, non-fungible tokens have proven to be very high demand products. Even WikiLeaks owns several high value CryptoKitties! But, ultimately this standard will further expand the cryptocurrency economy and help advance the field even more.</p>
-			<br>
-			<strong><u><h1>Setup</h1></u></strong>
-			<li>Open remix website</li>
-			<li>Fork the project from github</li>
-			<strong><u><h1>Bare minimum requirements</h1></u></strong>
-			<ul>write the code for the folowing functions:</ul>
-			<li>balanceOf :Gets the balance of the specified address</li>
-			<li>ownerOf :Gets the owner of the specified token ID</li>
-			<li>exists :Returns whether the specified token exists</li>
-			<li>approve :Approves another address to transfer the given token ID
-   * The zero address indicates there is no approved address.
-   * There can only be one approved address per token at a given time.
-   * Can only be called by the token owner or an approved operator.</li>
-			<li>getApproved :Gets the approved address for a token ID, or zero if no address set</li>
-			<li>setApprovalForAll :Sets or unsets the approval of a given operator
-   * An operator is allowed to transfer all tokens of the sender on their behalf</li>
-			<li>addTokenTo :Internal function to add a token ID to the list of a given address</li>
-
-
-
-			<strong><u><h1>Advance requirements</h1></u></strong>
-			<ul>install the folowing tools:</ul>
-			<li><a href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn">MetaMask</a> :allows you to run Ethereum dApps right in your browser without running a full Ethereum node.</li>
-			<li><a href="https://truffleframework.com/ganache">Ganache :</a>Quickly fire up a personal Ethereum blockchain which you can use to run tests, execute commands, and inspect state while controlling how the chain operates.</li>
-			<li><a href="https://truffleframework.com/docs/truffle/getting-started/installation">Truffle</a> :A world class development environment, testing framework and asset pipeline for blockchains using the Ethereum Virtual Machine (EVM), aiming to make life as a developer easier.</li>
-			<strong><u><h1>Extra Credit</h1></u></strong>
-			<li>Deploy your Dapp on any testing network(Rinkeby, Ropsten, Kovan)</li>
-			<li>Build Contract Testing using Mocha</li>
-
-
+				<h2 id="Key-words">
+					<strong>Key Words</strong>
+				</h2>
+				<hr>
+				<ul>
+					<li>smart contracts standards.</li>
+					<li>non-fungible token.</li>
+					<li>ERC721.</li>
+					<li>ERC Ethereum request for comments</li>
+					<li>Solidity.</li>
+					<!-- <li>Truffle.</li> -->
+					<li>Ethereum.</li>
+					<li>CryptoKitties.</li>
+					<li>smart contracts.</li>
+					<!-- <li>Web3.</li> -->
+				</ul>
 			</div>
-			<button class="scrollToTop btn btn-primary"><i class="fas fa-angle-double-up"></i></button>
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-			<script>
-				$(document).ready(function(){
-				$(function() {
-				$('a[href*="#"]:not([href="#"])').click(function() {
-					if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-					var target = $(this.hash);
-					target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-					if (target.length) {
-						$('html, body').animate({
-						scrollTop: target.offset().top
-						}, 900);
-						return false;
-					}
-					}
-				});
-				});
-				//Check to see if the window is top if not then display button
-				$(window).scroll(function(){
-					if ($(this).scrollTop() > 100) {
-						$('.scrollToTop').fadeIn();
-					} else {
-						$('.scrollToTop').fadeOut();
-					}
-				});
-				//Click event to scroll to top
-				$('.scrollToTop').click(function(){
-					$('html, body').animate({scrollTop : 0},800);
-					return false;
-				});
-				});
-			</script>
+
+
+			<h2>What is the non-fungible token ??</h2>
+			<p>A non-fungible token (NFT) is a special type of cryptographic token which represents something unique; non-fungible tokens
+				are thus not interchangeable. This is in contrast to cryptocurrencies like Bitcoin, and many network or utility tokens
+				that are fungible in nature.</p>
+
+			<p>
+				Non-fungible tokens are used to create verifiable digital scarcity. NFTs are used in several specific applications that require
+				unique digital items like crypto-collectibles and crypto-gaming. Popular blockchain games like CryptoKitties make use
+				of non-fungible tokens on the Ethereum blockchain NFTs are used to represent in-game assets, which are in control of
+				the user instead of the game developer NFTs also find potential use in digital art, by helping prove authenticity and
+				ownership
+			</p>
+
+			<p>
+				The Ethereum community has adopted the ERC-721 protocol as a standard for Non-Fungible Tokens on Ethereum. Projects like
+				CryptoKitties, CryptoPunks and Decentraland follow the ERC-721 protocol for their NFTs.
+			</p>
+
+			<p>
+				Non-fungible tokens made their way into mainstream news when CryptoKitties went viral and subsequently raised a $12.5 million
+				investment RareBits, a Non-Fungible Token marketplace and exchange raised a $6 million investment. Gamedex, a collectible
+				cards game platform made possible by Non-Fungible Tokens raised a $800,000 seed round. The creation of the Non-Fungible
+				Token protocol on the Ethereum blockchain has caused other blockchain projects such as NEO to begin development of their
+				own non-fungible token standards.
+			</p>
+			<h2>What is ERC-721??</h2>
+			<p>ERC-721 is a free, open standard that describes how to build non-fungible or unique tokens on the Ethereum blockchain.
+				While most tokens are fungible (every token is the same as every other token), ERC-721 tokens are all unique. Think of
+				them like rare, one-of-a-kind collectables.</p>
+
+			<h4> THE STANDARD</h4>
+			ERC-721 defines a minimum interface a smart contract must implement to allow unique tokens to be managed, owned, and traded.
+			It does not mandate a standard for token metadata or restrict adding supplemental functions.
+
+
+
+
+			<br>
+			<br>
+			<h2 id="high-level-goals">
+				<strong>High Level Goals of this Sprint</strong>
+			</h2>
+			<hr>
+			<ul>
+				<li>Learn the defferince between the non-fungible tokens vs the normal token(fungible Token).</li>
+				<li>Learn more about the smart contracts and implement a complex smart contracts.</li>
+				<li>Learn more about using remix to deploy and test you smart contracts</li>
+			</ul>
+			<br>
+			<br>
+
+			<h2 id="getting-started">
+				<strong>Getting Started</strong>
+			</h2>
+			<hr>
+			<h3>Get the smart contracts</h3>
+
+			<ul>
+				<li>
+					fork the repository that given to form the instructional team
+				</li>
+				<li>
+					clone it to your computer
+				</li>
+				<li>
+					open remix website
+				</li>
+				<li>
+					upload your repository files to remix website
+				</li>
+
+
+			</ul>
+
+			<br>
+			<br>
+
+
+
+
+
+
+			<h1 id="theproject">
+				<strong>The Project</strong>
+			</h1>
+
+			<hr>
+
+			<h2>- Bare minimum requirements</h2>
+			<ul>
+				<ul>navigate to ERC721BasicToken.sol file and write the code for the folowing functions:</ul>
+			</ul>
+			<li><input type="checkbox" class="task-list-item-checkbox">
+				balanceOf :Gets the balance of the specified address
+			</li>
+			<li><input type="checkbox" class="task-list-item-checkbox">
+			ownerOf :Gets the owner of the specified token ID
+		</li>
+			<li><input type="checkbox" class="task-list-item-checkbox">
+				exists :Returns whether the specified token exists
+			</li>
+			<li><input type="checkbox" class="task-list-item-checkbox">
+			isApprovedForAll: Tells whether an operator is approved by a given owner
+		</li>
+			<li><input type="checkbox" class="task-list-item-checkbox">
+				approve: Approves another address to transfer the given token ID
+			</li>
+			<li><input type="checkbox" class="task-list-item-checkbox">
+				getApproved: Gets the approved address for a token ID, or zero if no address set
+			</li>
+			<li><input type="checkbox" class="task-list-item-checkbox">
+				setApprovalForAll: Sets or unsets the approval of a given operator
+			</li>
+			<li><input type="checkbox" class="task-list-item-checkbox">
+				isApprovedOrOwner: Returns whether the given spender can transfer a given token ID
+			</li>
+			<li><input type="checkbox" class="task-list-item-checkbox">
+				clearApproval: Internal function to clear current approval of a given token ID
+			</li>
+			<li><input type="checkbox" class="task-list-item-checkbox">
+				removeTokenFrom: Internal function to remove a token ID from the list of a given address
+			</li>
+			<li><input type="checkbox" class="task-list-item-checkbox">
+				addTokenTo: Internal function to add a token ID to the list of a given address
+			</li>
+			<li><input type="checkbox" class="task-list-item-checkbox">
+				transferFrom: Transfers the ownership of a given token ID to another address
+			</li>
+			<li><input type="checkbox" class="task-list-item-checkbox">
+				_mint: Internal function to mint a new token
+			</li>
+			<li><input type="checkbox" class="task-list-item-checkbox">
+				_burn: Internal function to burn a specific token
+			</li>
+
+
+			<br>
+			<br>
+			<h2>- Advanced</h2>
+			<ul> navigate to ERC721Token.sol and write the following functions:</ul>
+			<li><input type="checkbox" class="task-list-item-checkbox">
+				_mint: Internal function to mint a new token
+			</li>
+			<li><input type="checkbox" class="task-list-item-checkbox">
+				_burn: Internal function to burn a specific token
+			</li>
+			<li><input type="checkbox" class="task-list-item-checkbox">
+				Deploy your contract and test it on remix
+			</li>
+
+			<br>
+			<br>
+
+
+			<h1 id="extracredit">Extra Credit</h1>
+			<li><input type="checkbox" class="task-list-item-checkbox">
+				Build your own Dapp  on the top of your ERC721 Token
+			</li>
+			<li><input type="checkbox" class="task-list-item-checkbox">
+				Sleep well ;)
+			</li>
 		</div>
-	</body>
+
+
+
+	</div>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<button class="scrollToTop btn btn-primary">
+		<i class="fas fa-angle-double-up"></i>
+	</button>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	<script>
+		$(document).ready(function () {
+
+			$(function () {
+
+				$('a[href*="#"]:not([href="#"])').click(function () {
+
+					if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+
+						var target = $(this.hash);
+
+						target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+
+						if (target.length) {
+
+							$('html, body').animate({
+
+								scrollTop: target.offset().top
+
+							}, 900);
+
+							return false;
+
+						}
+
+					}
+
+				});
+
+			});
+
+			//Check to see if the window is top if not then display button
+
+			$(window).scroll(function () {
+
+				if ($(this).scrollTop() > 100) {
+
+					$('.scrollToTop').fadeIn();
+
+				} else {
+
+					$('.scrollToTop').fadeOut();
+
+				}
+
+			});
+
+			//Click event to scroll to top
+
+			$('.scrollToTop').click(function () {
+
+				$('html, body').animate({
+					scrollTop: 0
+				}, 800);
+
+				return false;
+
+			});
+
+		});
+	</script>
+
+	</div>
+
+</body>
+
 </html>
