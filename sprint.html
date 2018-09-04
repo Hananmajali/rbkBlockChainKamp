@@ -17,7 +17,7 @@
                 <div class="page">
                     <h1 id="chatterbox-server"><strong>Sprint Two: Solidity Exercises</strong></h1>
                     <hr>
-                    <p>To be changed.</p>
+                    <!-- <p>To be changed.</p> -->
                     <ul>
                         <li><a href="#getting-started">Getting Started</a>
                         </li>
@@ -34,7 +34,7 @@
                         <li><a href="#metamask">MetaMask</a></li>
                         <li><a href="#exercises">The Exercises</a>
                             <ul>
-                            	
+
                                 <li><a href="#01practice">1- Warm up exercise</a>
                                 </li>
                                 <li><a href="#02blockchainDB">2- Blockchain Camp Database</a>
@@ -58,7 +58,7 @@
                     <p>section uses Remix online IDE. To begin, open Remix on your browser by navigating to:<a href="http://Remix.ethereum.org">Remix.ethereum.org</a>
 , then follow the instructions below which will guide you through what you have to build in this sprint.
                     <p>
-          
+
 
 
                     	<h2 id="resources"><strong>Resouces</strong></h2>
@@ -73,7 +73,7 @@
                       <iframe src="https://docs.google.com/presentation/d/17c4c8XqcxLrX9DbBS8MZyQqytH4-_h9PTLHkP-sfb10/embed?start=false&loop=false&delayms=3000" frameborder="0" width="853" height="480" allowfullscreen="true" mozallowfullscreen="true"
                   webkitallowfullscreen="true"></iframe><br> <br>
                     	<li>
-                    		
+
                     	<h3 id="useful-links"><strong>Useful Links</strong></h3>
                     	<ol>
                     		<li><a href="https://solidity.readthedocs.io/en/v0.4.24/">Solidity Documentation</a></li>
@@ -83,23 +83,21 @@
                     	</li>
 
                     </ul>
-                  
+
                     <br>
 
       <h1 id="metamask"><strong>MetaMask:</strong></h1>
 
 <hr>
-      <p> 
+      <p>
 - At the begining you have to download metamask from Chrome Web Store.<br>
-1- in your Chrome browser navigate to <a href="https://chrome.google.com/webstore/category/extensions"> Chrome web store</a><br>
-2- search for metamask.<br>
-3- click ADD TO CHROME.<br>
-4- you will have its icon in your browser.<br>
-5- click on the icon, and complete the steps untill you have the "create" window.<br>
-6- enter your password and save your secret words.<br>
+1- In your Chrome browser navigate to <a href="https://chrome.google.com/webstore/category/extensions"> Chrome web store</a><br>
+2- Add Metamask extension to Chrome.<br>
+5- Set up your metamask by following the steps<br>
+*Note: make sure to save your 12 words mnemonic. <br>
 <br>
 
-- After that you will have your account (Account1) created, you can see that you don't have any ethers until now.<br>
+- Now you have your account (Account1) created, you can see that you don't have any ethers until now.<br>
 - From the drop list on the top you can see the Ethereum networks :<br>
   <ul>
 
@@ -114,24 +112,22 @@
   <li>d- Custom RPC : when we are using some remote network at some address.<br></li>
 </ul>
 <br>
-- Now you have to get some ethers :<br>
-1- for that we will use Rinkeby test network, select it from the drop list in the top.<br>
-2- copy your account address, click on the three dots beside your account name (Account1) and then select copy. <br>
-3- in your browser navigate to <a href=" https://faucet.rinkeby.io"> faucet.rinkeby.io </a><br>
-4- follow the steps mentioned in the web site to get your ethers.<br>
-5- after completing all the steps successfully, your balance should be changed and you should see the amount of ethers you get. <br>
+- Getting some ethers :<br>
+1- This sprint uses Rinkeby test network, select it.<br>
+2- Navigate to <a href=" https://faucet.rinkeby.io"> faucet.rinkeby.io </a> and follow the steps.<br>
+3- after completing all the steps successfully, your balance should be changed and you should see the amount of ethers you get. <br>
 
-Notice that if you changed the network, your balance will not be the same. <br>
+Notice that if you change the network, your balance will not be the same. <br>
 <br>
 - Perform a transaction :<br>
-1- create another account from the icon on the top right, click on it and select Create Account. <br>
-2- now you have two accounts (Account1 and Account2), you can switch between them by selecting the account name from the same icon. <br>
-3- from Account1, click on send and put the recipient address (Account2) and yhe ammount you want to transfer, then click next then submit.<br>
+1- Create another account. <br>
+2- Now you have two accounts (Account1 and Account2), you can switch between them.<br>
+3- Try to send some ethers from Account1 to Account2.<br>
 <br>
 Notice that the balances will not change immediately, you will be notified when it is completed, after that you can check the balance for the both accounts.<br>
 <br>
 - Etherscan : <br>
-it is the leading BlockExplorer for the Ethereum Blockchain. A BlockExplorer is basically a search engine that allows users to easily lookup, confirm and validate transactions that have taken place on the Ethereum Blockchain. <br>
+It is the leading BlockExplorer for the Ethereum Blockchain. A BlockExplorer is basically a search engine that allows users to easily lookup, confirm and validate transactions that have taken place on the Ethereum Blockchain. <br>
 you can check it <a href="https://etherscan.io">HERE</a>
 
 </p>
@@ -160,7 +156,7 @@ contract exercise {
        balance=2*balance;
        return balance;
    }
-   
+
 }
 </code></pre>
 <p>1- Fix the errors.
@@ -174,10 +170,10 @@ contract exercise {
 7-Write a method that uses another method in the contract and make sure of your result.</p>
 			<h3 id="02blockchainDB" style='font-weight: bold'>II.	BlockChain Camp Database:</h3>
 
-			
+
 
 			<p>Create a contract BCCamp that will store information of BlockChain mini boot camp students, this information includes name, age, and if he/she is enjoying or not :D and every student information should be bound with his/her ethereum account address.
-You need to build these functions: 
+You need to build these functions:
 </p>
 
 				<p>
@@ -188,16 +184,16 @@ You need to build these functions:
 <b>Bonus:</b> <br>
  3. <b>getStudents</b>  that should return all of the registered students addresses.
  <br>4. <b>countStudents</b>
- that should return how many students are registered.</p> 
+ that should return how many students are registered.</p>
 
 
 			<h3 id="03auction" style='font-weight: bold'>III. Auction Contract:</h3>
 
-			
 
 
-			<p>Create a contract Auction that will receive bids from people who are willing to get a specific asset, the asset in our case will be only a password given from the beneficiary 
-to the bidder who offers the highest price after the period of the auction time is over.  
+
+			<p>Create a contract Auction that will receive bids from people who are willing to get a specific asset, the asset in our case will be only a password given from the beneficiary
+to the bidder who offers the highest price after the period of the auction time is over.
 Your job is to build the following functions:
 
 			</p>
@@ -214,13 +210,13 @@ Your job is to build the following functions:
 			<h3 id="04knapsack" style='font-weight: bold'>IV.	(0-1) Knapsack Algorithem</h3>
 
 
-			<p>Given weights and values of n items, put these items in a knapsack of capacity W to get the maximum total value in the knapsack. In other words, given two integer arrays val[0..n-1] and wt[0..n-1] which represent values and weights associated with n items respectively. Also given an integer W which represents knapsack capacity, find out the maximum value subset of val[] such that sum of the weights of this subset is smaller than or equal to W. You cannot break an item, either pick the complete item, or don’t pick it (0-1 property)
+			<p>Given two integer arrays val, wt and an integer W which represent values, weights for n elements and capacity respectively, find out the maximum value subset of val[] such that sum of the weights of this subset is smaller than or equal to W. You cannot break an item, either pick the complete item, or don’t pick it (0-1 property)
 
 			</p>
 
 
 
-		
+
 
 			<h1 id="extracredit">Extra Credit</h1>
 
