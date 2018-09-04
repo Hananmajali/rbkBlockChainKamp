@@ -1,0 +1,283 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <title>Sprint Four: Build your own non-fungible Token
+    </title>
+</head>
+<link rel="icon" href="Sawtooth.png" type="image/x-icon" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="style.css" />
+<style>
+    h2,
+    h1 {
+        font-weight: bold;
+        text-transform: capitalize;
+        color: black;
+    }
+
+    code {
+        background: #335;
+        padding: 5px;
+    }
+
+    a {
+        color: #666;
+    }
+</style>
+
+<body class='container'>
+    <div class="main-content">
+        <div>
+            <div class="page">
+                <h1 id="chatterbox-server">
+                    <strong>Sprint Four: Build your own non-fungible Token</strong>
+                </h1>
+                <hr>
+                <br>
+                <h2>Sprint Map</h2>
+                <ul>
+                    <li>
+                        <a href="#Key-words">Key Words</a>
+                    </li>
+                    <li>
+                        <a href="#high-level-goals">High Level Goals of this Sprint</a>
+                    </li>
+                    <li>
+                        <a href="#getting-started">Get Started</a>
+                    </li>
+                    <li>
+                        <a href="#theproject">The Project</a>
+                    </li>
+                    <li>
+                        <a href="#extracredit">Extra Credit</a>
+                    </li>
+                </ul>
+                <br>
+
+                <h2 id="Key-words">
+                    <strong>Key Words</strong>
+                </h2>
+                <hr>
+                <ul>
+                    <li>Truffle.</li>
+                    <li>Solidity.</li>
+                    <li>Web3.</li>
+                    <li>Ethereum.</li>
+                    <li>smart contracts.</li>
+                </ul>
+            </div>
+            <br>
+            <br>
+            <h2 id="high-level-goals">
+                <strong>High Level Goals of this Sprint</strong>
+            </h2>
+            <hr>
+            <ul>
+                <li>Learn how to use truffle framework to make your life easier</li>
+                <li>Learn how to deal with your contract form your web app.</li>
+                <li>Practice web3 to control every thing on your contract.</li>
+                <li>get to know how to build a full DAPP using truffle.</li>
+            </ul>
+            <br>
+            <br>
+
+            <h2 id="getting-started">
+                <strong>Getting Started and Project Set Up</strong>
+            </h2>
+            <hr>
+            <ul>
+                <li>
+                    fork the repository that given to form the instructional team
+                </li>
+                <li>
+                    clone it to your computer
+                </li>
+                <li>
+                    open the project folder and run
+                    <code>npm install</code> to install the node dependencies.
+                </li>
+                <li>
+                    open ganache and be sure to set the port in the settings to
+                    <code>8545</code>
+                    if you still don't have ganache installed on your machine you can install from
+                    <a href="https://truffleframework.com/ganache"> here</a>
+                </li>
+                <li>
+                    if you don't have truffle installed globaly on your machine you need to install it by writing this
+                    command on terminal
+                    <code>npm install -g truffle</code>
+                </li>
+
+            </ul>
+
+            <br>
+            <br>
+
+
+
+
+
+
+            <h1 id="theproject">
+                <strong>The Project</strong>
+            </h1>
+
+            <hr>
+            <ul>
+                <li>
+                    if you already have truffle installed globaly on your machine so run the smart contracts test using
+                    this command
+                    <code>truffle test</code>
+                </li>
+                <li>
+                    when you get the smart contract fully working now you need to build the functions that interact
+                    with smart contract via web3
+                    on the client side.
+                </li>
+                <li>
+                    to modify the methods you can
+                    <code>~/src/js/app.js</code>
+                </li>
+                <li>run the lite server to run the website on a local host by running
+                    <code>npm run dev</code>
+                </li>
+                <li>when you run it for the first time it will not be functional but your job is to implement the
+                    methods correctly and use
+                    the method
+                    <code>App.setMesagge</code> to show the result to the end user
+                </li>
+                <li>make sure to compile the smart contract and deploy it on ganache using truffle by using this
+                    command
+                    <code>truffle migrate --compile-all --reset</code>
+                </li>
+                <li>
+                    do not forget to push your code to github.
+                </li>
+
+                <br>
+                <br>
+                <h1 id="extracredit">nightmare mode</h1>
+                <ul>
+                    <li>
+                        deploy your smart contracts to Ethereum Rinkeby or Reposten test networks
+                    </li>
+                </ul>
+                <hr>
+
+        </div>
+
+        <h1 id="useful-links">
+            <strong>Useful Links</strong>
+        </h1>
+        <hr>
+        <ul>
+            <li>
+                <a href="https://truffleframework.com/docs">truffle and ganache documentation</a>
+            </li>
+            <li>
+                <a href="https://truffleframework.com/docs/ganache/overview">ganache</a>
+            </li>
+            <li>
+                <a href="https://github.com/ethereum/web3.js/">web3 readme</a>
+            </li>
+            <li>
+                <a href="https://web3j.readthedocs.io/en/latest/infura.html">Using Infura with web3</a>
+            </li>
+        </ul>
+
+
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <button class="scrollToTop btn btn-primary">
+        <i class="fas fa-angle-double-up"></i>
+    </button>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $(function () {
+
+                $('a[href*="#"]:not([href="#"])').click(function () {
+
+                    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
+                        location.hostname == this.hostname) {
+
+                        var target = $(this.hash);
+
+                        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+
+                        if (target.length) {
+
+                            $('html, body').animate({
+
+                                scrollTop: target.offset().top
+
+                            }, 900);
+
+                            return false;
+
+                        }
+
+                    }
+
+                });
+
+            });
+
+            //Check to see if the window is top if not then display button
+
+            $(window).scroll(function () {
+
+                if ($(this).scrollTop() > 100) {
+
+                    $('.scrollToTop').fadeIn();
+
+                } else {
+
+                    $('.scrollToTop').fadeOut();
+
+                }
+
+            });
+
+            //Click event to scroll to top
+
+            $('.scrollToTop').click(function () {
+
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 800);
+
+                return false;
+
+            });
+
+        });
+    </script>
+
+    </div>
+
+</body>
+
+</html>
